@@ -1,0 +1,18 @@
+//TODO:
+- Breakdown components
+    - Navbar
+        - Search Bar 
+        - Shopping Cart 
+        - Account Information 
+    - Homepage
+        - Inventory (Products)
+    - Inventory   
+        - Page for each item, with the:
+            Product Name
+            Serial Number
+            Price
+            Manufacturer
+            Category / Tag
+    - Shopping Cart 
+    
+    
