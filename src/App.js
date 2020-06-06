@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -14,11 +14,7 @@ function App() {
             <div className="App">
                 <Navbar />
                 <Switch>
-                    <Route
-                        exact
-                        path="/shoppingcart"
-                        component={ShoppingCart}
-                    />
+                    <Route exact path="/cart" component={ShoppingCart} />
                     <Route path="/" component={Home} />
                     <Route
                         path="/products/:id"

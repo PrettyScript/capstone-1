@@ -6,6 +6,7 @@
         - Account Information 
     - Homepage
         - Inventory (Products)
+        - When products are added to cart, the cart should reflect the quantities
     - Inventory   
         - Page for each item, with the:
             Product Name
@@ -13,7 +14,18 @@
             Price
             Manufacturer
             Category / Tag
-    - Shopping Cart 
+        - Fade image when the item is sold-out (or add a tag on img when sold out)
+    - Shopping Cart
+        - Display items in Cart 
+        - Remove unwanted items
+        - Purchase items - Checkout button (Checkout Page)
+        - Go back to items page
+        - Increase quantities of each item
+        - Total of cart
+        -Continue Shopping link (links to homepage with products)
+    - Checkout Page
+        - add third party payment (Paypal) 
+        - Summary of purchase order (price total)
 
     -Style Ideas:
         - Change FavIcon
@@ -24,5 +36,6 @@
     -Solved router issue, had to really examine the material ui code, I was trying to link the mobile render code and that's why there was issues.
     - Making the react router dynamic
     -First time using useeffect
+    - Getting the total price to reflect the quantities in the cart
     
     

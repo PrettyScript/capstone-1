@@ -201,7 +201,7 @@ export default function Navbar() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <Link to="/shoppingcart">
+                        <Link to="/cart">
                             <IconButton
                                 aria-label="show 4 new mails"
                                 color="inherit"
