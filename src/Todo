@@ -21,5 +21,8 @@
 
 - Challenges
     - React Router no easy to configure w/ material-ui
+    -Solved router issue, had to really examine the material ui code, I was trying to link the mobile render code and that's why there was issues.
+    - Making the react router dynamic
+    -First time using useeffect
     
     

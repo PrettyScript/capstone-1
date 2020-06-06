@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import "../Home.css";
 import Product from "./Product";
+import ProductDetails from "./ProductDetails";
 
 export default function Home() {
     const [products, setproducts] = useState([
-        "product 1",
-        "product 2",
-        "product 3",
-        "product 4"
+        { name: "product1", id: 1 },
+        { name: "product2", id: 2 },
+        { name: "product3", id: 3 }
     ]);
 
-    const handleProductPage = () => {
-        console.log(`Redirect to product's page`);
-    };
     return (
         <div>
             <header className="App-header">
@@ -20,8 +17,8 @@ export default function Home() {
             </header>
             {products.map(product => (
                 <Product
-                    key={product}
-                    productName={product}
+                    key={product.id}
+                    product={product}
                     products={products}
                     setproducts={setproducts}
                 />
