@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -176,9 +177,15 @@ export default function Navbar() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Celeste Boutique
-                    </Typography>
+                    <Link to="/">
+                        <Typography
+                            className={classes.title}
+                            variant="h6"
+                            noWrap
+                        >
+                            Celeste Boutique
+                        </Typography>
+                    </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -194,14 +201,16 @@ export default function Navbar() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton
-                            aria-label="show 4 new mails"
-                            color="inherit"
-                        >
-                            <Badge badgeContent={4} color="secondary">
-                                <ShoppingCartIcon />
-                            </Badge>
-                        </IconButton>
+                        <Link to="/shoppingcart">
+                            <IconButton
+                                aria-label="show 4 new mails"
+                                color="inherit"
+                            >
+                                <Badge badgeContent={4} color="secondary">
+                                    <ShoppingCartIcon />
+                                </Badge>
+                            </IconButton>
+                        </Link>
                         <IconButton
                             aria-label="show 17 new notifications"
                             color="inherit"

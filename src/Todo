@@ -14,5 +14,12 @@
             Manufacturer
             Category / Tag
     - Shopping Cart 
+
+    -Style Ideas:
+        - Change FavIcon
+
+
+- Challenges
+    - React Router no easy to configure w/ material-ui
     
     
