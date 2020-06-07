@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
     const [cart, setCart] = useState([
@@ -7,23 +8,26 @@ export default function ShoppingCart() {
         { name: "product3", id: 3, price: 10, quantity: 3 }
     ]);
 
-    const handleTotalPrice = () => {
-        let total = 0;
+    const [total, setTotal] = useState(38);
 
+    const handleTotalPrice = () => {
+        let newTotal = 0;
         cart.map(product => {
-            total += product.price;
+            newTotal += product.price * product.quantity;
         });
-        return total;
+        setTotal(newTotal);
     };
 
     const handleDeleteProduct = itemToBeRemoved => {
-        setCart(cart.filter(product => product.name != itemToBeRemoved));
+        setCart(cart.filter(product => product.name !== itemToBeRemoved.name));
+        setTotal(total - itemToBeRemoved.price * itemToBeRemoved.quantity);
     };
 
     const handleChangeQuantity = (productId, product) => {
         let selectedValue = document.getElementById(productId).value;
-        console.log(selectedValue);
-        product.quantity = selectedValue;
+        product.quantity = parseInt(selectedValue);
+        setCart(cart);
+        handleTotalPrice();
     };
 
     const handleCartItems = () => {
@@ -46,22 +50,24 @@ export default function ShoppingCart() {
                                     )
                                 }
                             >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                {[1, 2, 3, 4, 5].map(value =>
+                                    value !== product.quantity ? (
+                                        <option>{value}</option>
+                                    ) : (
+                                        <option selected>{value}</option>
+                                    )
+                                )}
                             </select>
                             <button
                                 onClick={() => {
-                                    handleDeleteProduct(product.name);
+                                    handleDeleteProduct(product);
                                 }}
                             >
                                 Delete
                             </button>
                         </div>
                     ))}
-                    <p>{`Your total is $${handleTotalPrice()}`}</p>
+                    <p>{`Your total is $${total}`}</p>
                 </div>
             );
         }
@@ -71,6 +77,7 @@ export default function ShoppingCart() {
         <div>
             <h1>Your Shopping Cart</h1>
             {handleCartItems()}
+            <Link to="/checkout">Proceed to Checkout</Link>
         </div>
     );
 }

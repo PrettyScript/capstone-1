@@ -4,9 +4,12 @@
         - Search Bar 
         - Shopping Cart 
         - Account Information 
+        - Create a 404 Page
+        - Mobile navbar links
     - Homepage
         - Inventory (Products)
         - When products are added to cart, the cart should reflect the quantities
+        - When adding items to cart, add a spinner for loading 
     - Inventory   
         - Page for each item, with the:
             Product Name
@@ -24,6 +27,7 @@
         - Total of cart
         -Continue Shopping link (links to homepage with products)
     - Checkout Page
+        - create a conditional for checkout link 
         - add third party payment (Paypal) 
         - Summary of purchase order (price total)
 
@@ -34,8 +38,14 @@
 - Challenges
     - React Router no easy to configure w/ material-ui
     -Solved router issue, had to really examine the material ui code, I was trying to link the mobile render code and that's why there was issues.
-    - Making the react router dynamic
+    - Making the react router dynamic for specific products
     -First time using useeffect
     - Getting the total price to reflect the quantities in the cart
+
+- Learned
+    - When a useState is wrapped in a useEffect it can cause an infinite re-render
+
+- Talking points
+    - Felt like endless to-dos
     
     

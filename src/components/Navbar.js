@@ -183,8 +183,9 @@ export default function Navbar() {
                             variant="h6"
                             noWrap
                         >
-                            Celeste Boutique
+                            Celeste
                         </Typography>
+                        <Typography>Luxury Baby Clothes</Typography>
                     </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
@@ -206,7 +207,7 @@ export default function Navbar() {
                                 aria-label="show 4 new mails"
                                 color="inherit"
                             >
-                                <Badge badgeContent={4} color="secondary">
+                                <Badge badgeContent={3} color="secondary">
                                     <ShoppingCartIcon />
                                 </Badge>
                             </IconButton>

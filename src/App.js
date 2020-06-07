@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import ShoppingCart from "./components/ShoppingCart";
 import Home from "./components/Home";
 import ProductDetails from "./components/ProductDetails";
 import NotFound from "./components/NotFound";
+import Checkout from "./components/Checkout";
 
 function App() {
     return (
@@ -14,13 +15,14 @@ function App() {
             <div className="App">
                 <Navbar />
                 <Switch>
-                    <Route exact path="/cart" component={ShoppingCart} />
-                    <Route path="/" component={Home} />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/cart" component={ShoppingCart} />
+
                     <Route
                         path="/products/:id"
-                        // component={ProductDetails}
                         render={() => <ProductDetails />}
                     />
+                    <Route path="/checkout" component={Checkout} />
                     <Route component={NotFound} />
                 </Switch>
             </div>
