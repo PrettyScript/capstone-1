@@ -4,7 +4,7 @@
         - Search Bar 
         - Shopping Cart 
         - Account Information 
-        - Create a 404 Page
+        - Create a 404 Page done 
         - Mobile navbar links
     - Homepage
         - Inventory (Products)
@@ -19,15 +19,16 @@
             Category / Tag
         - Fade image when the item is sold-out (or add a tag on img when sold out)
     - Shopping Cart
-        - Display items in Cart 
-        - Remove unwanted items
-        - Purchase items - Checkout button (Checkout Page)
+        ✔ Display items in Cart 
+        ✔ Remove unwanted items
+        ✔ Purchase items - Checkout button (Checkout Page)
         - Go back to items page
-        - Increase quantities of each item
-        - Total of cart
+        ✔ Increase/Decrease quantities of each item
+        ✔ Total price of cart
+        ✔ Total items in cart
         -Continue Shopping link (links to homepage with products)
     - Checkout Page
-        - create a conditional for checkout link 
+        ✔ create a conditional for checkout link 
         - add third party payment (Paypal) 
         - Summary of purchase order (price total)
 

@@ -28,6 +28,15 @@ export default function ShoppingCart() {
         product.quantity = parseInt(selectedValue);
         setCart(cart);
         handleTotalPrice();
+        console.log(`You have ${product.quantity} in your cart.`);
+    };
+
+    const handleCartTotalQuanity = () => {
+        let cartTotal = 0;
+        cart.map(product => {
+            cartTotal += product.quantity;
+        });
+        return cartTotal;
     };
 
     const handleCartItems = () => {
@@ -36,7 +45,7 @@ export default function ShoppingCart() {
         } else {
             return (
                 <div>
-                    <p>{`Your cart has ${cart.length} items in it`}</p>{" "}
+                    <p>{`Your cart has ${handleCartTotalQuanity()} items in it!`}</p>{" "}
                     {cart.map(product => (
                         <div>
                             <p>{product.name}</p>
@@ -68,6 +77,7 @@ export default function ShoppingCart() {
                         </div>
                     ))}
                     <p>{`Your total is $${total}`}</p>
+                    <Link to="/checkout">Proceed to Checkout</Link>
                 </div>
             );
         }
@@ -77,7 +87,6 @@ export default function ShoppingCart() {
         <div>
             <h1>Your Shopping Cart</h1>
             {handleCartItems()}
-            <Link to="/checkout">Proceed to Checkout</Link>
         </div>
     );
 }
