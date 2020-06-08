@@ -1,15 +1,17 @@
 //TODO:
 - Breakdown components
     - Navbar
-        - Search Bar 
-        - Shopping Cart 
-        - Account Information 
-        - Create a 404 Page done 
+        - Configure Search Bar 
+        ✔ Shopping Cart 
+        ✔ Create a 404 Page done 
         - Mobile navbar links
     - Homepage
         - Inventory (Products)
         - When products are added to cart, the cart should reflect the quantities
         - When adding items to cart, add a spinner for loading 
+        - Ability to add items to the cart from homepage
+    - Search Bar 
+        - Create conditionals to search for products 
     - Inventory   
         - Page for each item, with the:
             Product Name
@@ -18,6 +20,7 @@
             Manufacturer
             Category / Tag
         - Fade image when the item is sold-out (or add a tag on img when sold out)
+        - Ability to add items to the cart from product page
     - Shopping Cart
         ✔ Display items in Cart 
         ✔ Remove unwanted items
@@ -26,11 +29,18 @@
         ✔ Increase/Decrease quantities of each item
         ✔ Total price of cart
         ✔ Total items in cart
-        -Continue Shopping link (links to homepage with products)
+        - Continue Shopping link (links to homepage with products)
+        - Check that total price doesn't show as undefined, before cart manipulation
+        - When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
     - Checkout Page
         ✔ create a conditional for checkout link 
         - add third party payment (Paypal) 
         - Summary of purchase order (price total)
+    - App.js File 
+        - move state from Home component to App.js and then pass props to Home and Product Details page
+    - Overall Application
+        - Add comments throughout code on what is going on
+        - Add intitial to-do list to UPPER file via (github log)
 
     -Style Ideas:
         - Change FavIcon
@@ -45,6 +55,7 @@
 
 - Learned
     - When a useState is wrapped in a useEffect it can cause an infinite re-render
+    - Using mock data on differnt components to make development easy(decouple).
 
 - Talking points
     - Felt like endless to-dos

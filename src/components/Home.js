@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Home.css";
 import Product from "./Product";
-import ProductDetails from "./ProductDetails";
 
-export default function Home() {
-    const [products, setproducts] = useState([
-        { name: "product1", id: 1 },
-        { name: "product2", id: 2 },
-        { name: "product3", id: 3 }
-    ]);
+export default function Home(props) {
+    const { shoppingCart, setShoppingCart, products, setProducts } = props;
+
+    const handleAddingItemsToCart = product => {
+        // click button and add items to cart
+        // update the cart badge
+        console.log("added");
+        setShoppingCart([...shoppingCart, product]);
+    };
 
     return (
         <div>
@@ -16,12 +18,21 @@ export default function Home() {
                 <h1>[Place Ad here]</h1>
             </header>
             {products.map(product => (
-                <Product
-                    key={product.id}
-                    product={product}
-                    products={products}
-                    setproducts={setproducts}
-                />
+                <div>
+                    <Product
+                        key={product.id}
+                        product={product}
+                        products={products}
+                        setProducts={setProducts}
+                    />
+                    <button
+                        onClick={() => {
+                            handleAddingItemsToCart(product);
+                        }}
+                    >
+                        Add to cart
+                    </button>
+                </div>
             ))}
         </div>
     );
