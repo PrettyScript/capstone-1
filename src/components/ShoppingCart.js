@@ -15,6 +15,11 @@ export default function ShoppingCart(props) {
         setTotal(newTotal);
     };
 
+    useEffect(() => {
+        handleTotalPrice();
+        console.log(total);
+    });
+
     const handleDeleteProduct = itemToBeRemoved => {
         setShoppingCart(
             shoppingCart.filter(
@@ -30,7 +35,6 @@ export default function ShoppingCart(props) {
         product.quantity = parseInt(selectedValue);
         setShoppingCart(shoppingCart);
         handleTotalPrice();
-        // handleCartTotalQuanity();
     };
 
     const handleCartTotalQuanity = () => {
@@ -38,7 +42,6 @@ export default function ShoppingCart(props) {
         shoppingCart.map(product => {
             cartTotal += product.quantity;
         });
-        // setTotalItems(cartTotal);
         return cartTotal;
     };
 

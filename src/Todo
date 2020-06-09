@@ -7,11 +7,11 @@
         - Mobile navbar links
     - Homepage
         ✔ Inventory (Products)
-        - When products are added to cart, the cart should reflect the quantities
+        ✔ When products are added to cart, the cart should reflect the quantities
         - When adding items to cart, add a spinner for loading 
         ✔ Ability to add items to the cart from homepage
     - Search Bar 
-        - Create conditionals to search for products by product name
+        ✔ Create conditionals to search for products by product name
     - Inventory   
         ✔ Page for each item, with the:
             Product Name
@@ -30,8 +30,8 @@
         ✔ Total price of cart
         ✔ Total items in cart
         - Continue Shopping link (links to homepage with products)
-        - Check that total price doesn't show as undefined, before cart manipulation
-        - When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
+        ✔ Check that total price doesn't show as undefined, before cart manipulation
+        ✔ When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
     - Checkout Page
         ✔ create a conditional for checkout link 
         - add third party payment (Paypal) 

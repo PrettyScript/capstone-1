@@ -17,7 +17,7 @@ function App() {
             price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
-            quantity: 0
+            quantity: 1
         },
         {
             name: "bananas",
@@ -25,7 +25,7 @@ function App() {
             price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
-            quantity: 0
+            quantity: 1
         },
         {
             name: "carrots",
@@ -33,7 +33,7 @@ function App() {
             price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
-            quantity: 0
+            quantity: 1
         },
         {
             name: "donuts",
@@ -41,7 +41,7 @@ function App() {
             price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
-            quantity: 0
+            quantity: 1
         },
         {
             name: "eggplant",
@@ -49,7 +49,7 @@ function App() {
             price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
-            quantity: 0
+            quantity: 1
         }
     ]);
 
@@ -74,15 +74,48 @@ function App() {
 
     const [inputValue, setInputValue] = useState("");
     const [filteredProducts, setFilteredProduct] = useState([]);
+    const [isFiltered, setIsFiltered] = useState(true);
 
-    const productFilter = e => {
+    const productFilter = () => {
         // console.log("Hey from App js", e.target.value);
-        setInputValue(e.target.value);
+
         setFilteredProduct(
             products.filter(product => product.name.includes(inputValue))
         );
-        console.log(filteredProducts);
+        setIsFiltered(true);
     };
+
+    const handleSetInputValue = () => {
+        if (inputValue !== document.getElementById("searchBar").value) {
+            setIsFiltered(false);
+            setInputValue(document.getElementById("searchBar").value);
+        }
+    };
+
+    useEffect(() => {
+        handleSetInputValue();
+        if (!isFiltered) {
+            productFilter();
+        }
+    });
+
+    const handleAddingItemsToCart = product => {
+        // update the cart badge
+        console.log("added");
+        if (shoppingCart.includes(product)) {
+            if (product.quantity < 5) {
+                product.quantity++;
+                setShoppingCart(shoppingCart);
+            } else {
+                setMaxQuantityReached(true);
+                console.log("You reached your max!!");
+            }
+        } else {
+            setShoppingCart([...shoppingCart, product]);
+        }
+    };
+
+    const [maxQuantityReached, setMaxQuantityReached] = useState(false);
 
     // useEffect(() => {
     //     searchProductRequest();
@@ -99,6 +132,7 @@ function App() {
                 <Navbar
                     productFilter={productFilter}
                     inputValue={inputValue}
+                    handleSetInputValue={handleSetInputValue}
                     // searchProductRequest={searchProductRequest}
                 />
                 <Switch>
@@ -112,6 +146,12 @@ function App() {
                                 products={products}
                                 setProducts={setProducts}
                                 filteredProducts={filteredProducts}
+                                handleAddingItemsToCart={
+                                    handleAddingItemsToCart
+                                }
+                                maxQuantityReached={maxQuantityReached}
+                                setMaxQuantityReached={setMaxQuantityReached}
+                                inputValue={inputValue}
                             />
                         )}
                     />

@@ -9,36 +9,37 @@ export default function Home(props) {
         setShoppingCart,
         products,
         setProducts,
-        filteredProducts
+        filteredProducts,
+        handleAddingItemsToCart,
+        maxQuantityReached,
+        setMaxQuantityReached,
+        inputValue
     } = props;
 
-    const handleAddingItemsToCart = product => {
-        // click button and add items to cart
-        // update the cart badge
-        console.log("added");
-        setShoppingCart([...shoppingCart, product]);
-    };
-
     const displayProducts = listOfProducts => {
-        return listOfProducts.map(product => (
-            <div>
-                <Link to={`/products/${product.name}`} product={product}>
-                    <Product
-                        key={product.id}
-                        product={product}
-                        products={products}
-                        setProducts={setProducts}
-                    />
-                </Link>
-                <button
-                    onClick={() => {
-                        handleAddingItemsToCart(product);
-                    }}
-                >
-                    Add to cart
-                </button>
-            </div>
-        ));
+        return inputValue.length > 0 && filteredProducts.length === 0 ? (
+            <p>That product is not available</p>
+        ) : (
+            listOfProducts.map(product => (
+                <div>
+                    <Link to={`/products/${product.name}`} product={product}>
+                        <Product
+                            key={product.id}
+                            product={product}
+                            products={products}
+                            setProducts={setProducts}
+                        />
+                    </Link>
+                    <button
+                        onClick={() => {
+                            handleAddingItemsToCart(product);
+                        }}
+                    >
+                        Add to cart
+                    </button>
+                </div>
+            ))
+        );
     };
 
     return (
