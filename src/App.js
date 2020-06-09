@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import ShoppingCart from "./components/ShoppingCart";
@@ -77,8 +77,6 @@ function App() {
     const [isFiltered, setIsFiltered] = useState(true);
 
     const productFilter = () => {
-        // console.log("Hey from App js", e.target.value);
-
         setFilteredProduct(
             products.filter(product => product.name.includes(inputValue))
         );
@@ -99,6 +97,10 @@ function App() {
         }
     });
 
+    const [maxQuantityReached, setMaxQuantityReached] = useState(false);
+
+    const [total, setTotal] = useState(0);
+
     const handleAddingItemsToCart = product => {
         // update the cart badge
         console.log("added");
@@ -115,16 +117,28 @@ function App() {
         }
     };
 
-    const [maxQuantityReached, setMaxQuantityReached] = useState(false);
+    const handleTotalPrice = () => {
+        let newTotal = 0;
+        shoppingCart.map(product => {
+            newTotal += product.price * product.quantity;
+        });
+        setTotal(newTotal);
+    };
 
-    // useEffect(() => {
-    //     searchProductRequest();
-    // });
+    const handleChangeQuantity = (productId, product) => {
+        let selectedValue = document.getElementById(productId).value;
+        product.quantity = parseInt(selectedValue);
+        setShoppingCart(shoppingCart);
+        handleTotalPrice();
+    };
 
-    // const searchProductRequest = () => {
-    //     console.log("searching...");
-    //     products.filter(product => product.name === inputValue);
-    // };
+    const handleCartTotalQuanity = () => {
+        let cartTotal = 0;
+        shoppingCart.map(product => {
+            cartTotal += product.quantity;
+        });
+        return cartTotal;
+    };
 
     return (
         <Router>
@@ -133,7 +147,6 @@ function App() {
                     productFilter={productFilter}
                     inputValue={inputValue}
                     handleSetInputValue={handleSetInputValue}
-                    // searchProductRequest={searchProductRequest}
                 />
                 <Switch>
                     <Route
@@ -163,6 +176,11 @@ function App() {
                                 setShoppingCart={setShoppingCart}
                                 products={products}
                                 setProducts={setProducts}
+                                handleTotalPrice={handleTotalPrice}
+                                handleChangeQuantity={handleChangeQuantity}
+                                handleCartTotalQuanity={handleCartTotalQuanity}
+                                total={total}
+                                setTotal={setTotal}
                             />
                         )}
                     />
@@ -176,6 +194,9 @@ function App() {
                                 setShoppingCart={setShoppingCart}
                                 products={products}
                                 setProducts={setProducts}
+                                handleAddingItemsToCart={
+                                    handleAddingItemsToCart
+                                }
                             />
                         )}
                     />

@@ -81,13 +81,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Navbar(props) {
-    const {
-        inputValue,
-        setInputValue,
-        productFilter,
-        searchProductRequest,
-        handleSetInputValue
-    } = props;
+    const { inputValue, searchProductRequest, handleSetInputValue } = props;
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -203,9 +197,6 @@ export default function Navbar(props) {
                             }}
                             inputProps={{ "aria-label": "search" }}
                             value={inputValue}
-                            // onChange={e => {
-                            //     productFilter(e.target.value);
-                            // }}
                             onChange={handleSetInputValue}
                         />
                     </div>

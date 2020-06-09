@@ -20,7 +20,7 @@
             Manufacturer
             Category / Tag
         - Fade image when the item is sold-out (or add a tag on img when sold out)
-        - Ability to add items to the cart from product page
+        ✔ Ability to add items to the cart from product page
     - Shopping Cart
         ✔ Display items in Cart 
         ✔ Remove unwanted items

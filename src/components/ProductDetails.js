@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function ProductDetails(props) {
-    const { products, match } = props;
+    const { products, match, handleAddingItemsToCart, product } = props;
 
     const { name } = match.params;
     console.log(name, products);
@@ -14,6 +14,13 @@ export default function ProductDetails(props) {
                     <p>{product.serialNumber}</p>
                     <p>{product.manufacturer}</p>
                     <p>{product.cateogory}</p>
+                    <button
+                        onClick={() => {
+                            handleAddingItemsToCart(product);
+                        }}
+                    >
+                        Add to Cart
+                    </button>
                 </div>
             );
     });
