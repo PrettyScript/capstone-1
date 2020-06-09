@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
@@ -12,41 +12,41 @@ import Checkout from "./components/Checkout";
 function App() {
     const [products, setProducts] = useState([
         {
-            name: "productName1",
+            name: "apple",
             serialNumber: 12345,
-            price: 10,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 0
         },
         {
-            name: "productName2",
+            name: "bananas",
             serialNumber: 23456,
-            price: 8,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 0
         },
         {
-            name: "productName3",
+            name: "carrots",
             serialNumber: 34567,
-            price: 4,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 0
         },
         {
-            name: "productName4",
+            name: "donuts",
             serialNumber: 45678,
-            price: 23,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 0
         },
         {
-            name: "productName5",
+            name: "eggplant",
             serialNumber: 56789,
-            price: 16,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 0
@@ -57,7 +57,7 @@ function App() {
         {
             name: "productName4",
             serialNumber: 45678,
-            price: 23,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 5
@@ -65,21 +65,41 @@ function App() {
         {
             name: "productName5",
             serialNumber: 56789,
-            price: 16,
+            price: 1,
             manufacturer: "CC",
             cateogory: "clothing",
             quantity: 5
         }
     ]);
 
+    const [inputValue, setInputValue] = useState("");
+    const [filteredProducts, setFilteredProduct] = useState([]);
+
+    const productFilter = e => {
+        // console.log("Hey from App js", e.target.value);
+        setInputValue(e.target.value);
+        setFilteredProduct(
+            products.filter(product => product.name.includes(inputValue))
+        );
+        console.log(filteredProducts);
+    };
+
+    // useEffect(() => {
+    //     searchProductRequest();
+    // });
+
+    // const searchProductRequest = () => {
+    //     console.log("searching...");
+    //     products.filter(product => product.name === inputValue);
+    // };
+
     return (
         <Router>
             <div className="App">
                 <Navbar
-                    shoppingCart={shoppingCart}
-                    setShoppingCart={setShoppingCart}
-                    products={products}
-                    setProducts={setProducts}
+                    productFilter={productFilter}
+                    inputValue={inputValue}
+                    // searchProductRequest={searchProductRequest}
                 />
                 <Switch>
                     <Route
@@ -91,6 +111,7 @@ function App() {
                                 setShoppingCart={setShoppingCart}
                                 products={products}
                                 setProducts={setProducts}
+                                filteredProducts={filteredProducts}
                             />
                         )}
                     />
@@ -108,7 +129,15 @@ function App() {
 
                     <Route
                         path="/products/:name"
-                        render={() => <ProductDetails products={products} />}
+                        render={props => (
+                            <ProductDetails
+                                {...props}
+                                shoppingCart={shoppingCart}
+                                setShoppingCart={setShoppingCart}
+                                products={products}
+                                setProducts={setProducts}
+                            />
+                        )}
                     />
                     <Route path="/checkout" component={Checkout} />
                     <Route component={NotFound} />

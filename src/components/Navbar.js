@@ -80,7 +80,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
+    const { inputValue, productFilter, searchProductRequest } = props;
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -181,7 +183,10 @@ export default function Navbar() {
                     </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
-                            <SearchIcon />
+                            <SearchIcon
+                                style={{ cursor: "pointer" }}
+                                onClick={() => searchProductRequest()}
+                            />
                         </div>
                         <InputBase
                             placeholder="Search…"
@@ -190,6 +195,8 @@ export default function Navbar() {
                                 input: classes.inputInput
                             }}
                             inputProps={{ "aria-label": "search" }}
+                            value={inputValue}
+                            onChange={productFilter}
                         />
                     </div>
                     <div className={classes.grow} />

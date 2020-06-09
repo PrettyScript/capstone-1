@@ -1,15 +1,14 @@
 import React from "react";
 import "../Product.css";
-import { Link } from "react-router-dom";
 
 export default function Product(props) {
     const { products, setproducts, product } = props;
 
+    const displayProduct = products.map(product => <p>{product.name}</p>);
+
     return (
         <div>
-            <Link to={`/products/${product.name}`} product={product}>
-                <p className="product">{product.name}</p>
-            </Link>
+            <p className="product">{product.name}</p>
         </div>
     );
 }

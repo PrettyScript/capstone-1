@@ -1,19 +1,19 @@
 //TODO:
 - Breakdown components
     - Navbar
-        - Configure Search Bar 
+        ✔ Configure Search Bar 
         ✔ Shopping Cart 
         ✔ Create a 404 Page done 
         - Mobile navbar links
     - Homepage
-        - Inventory (Products)
+        ✔ Inventory (Products)
         - When products are added to cart, the cart should reflect the quantities
         - When adding items to cart, add a spinner for loading 
-        - Ability to add items to the cart from homepage
+        ✔ Ability to add items to the cart from homepage
     - Search Bar 
-        - Create conditionals to search for products 
+        - Create conditionals to search for products by product name
     - Inventory   
-        - Page for each item, with the:
+        ✔ Page for each item, with the:
             Product Name
             Serial Number
             Price
@@ -37,7 +37,7 @@
         - add third party payment (Paypal) 
         - Summary of purchase order (price total)
     - App.js File 
-        - move state from Home component to App.js and then pass props to Home and Product Details page
+        ✔ move state from Home component to App.js and then pass props to Home and Product Details page
     - Overall Application
         - Add comments throughout code on what is going on
         - Add intitial to-do list to UPPER file via (github log)
@@ -47,9 +47,11 @@
 
 
 - Challenges
-    - React Router no easy to configure w/ material-ui
-    -Solved router issue, had to really examine the material ui code, I was trying to link the mobile render code and that's why there was issues.
-    - Making the react router dynamic for specific products
+    - React Router not easy to configure w/ material-ui
+        -Solved router issue, had to really examine the material ui code, I was trying to link the mobile render code and that's why there was issues.
+    - Making the react router dynamic for specific products, taking hours to make each product page to work, the link is showing the current route, but the page isn't loading diffrent product information. It's very frustrating. 
+        - Finally able to get each page to render different product names but now I am having a hard time passing props from app js to this specific component
+        - Found a solution on stackoverflow on how to pass props, but now the issuse that I am having is that, I am having a hard time trying to dynamically render the product detail for different products.
     -First time using useeffect
     - Getting the total price to reflect the quantities in the cart
 

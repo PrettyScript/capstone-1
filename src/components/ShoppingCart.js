@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function ShoppingCart(props) {
     const { shoppingCart, setShoppingCart, products, setProducts } = props;
 
     const [total, setTotal] = useState(0);
+    const [totalItems, setTotalItems] = useState(0);
 
     const handleTotalPrice = () => {
         let newTotal = 0;
@@ -21,6 +22,7 @@ export default function ShoppingCart(props) {
             )
         );
         setTotal(total - itemToBeRemoved.price * itemToBeRemoved.quantity);
+        setTotalItems(totalItems - itemToBeRemoved.quantity);
     };
 
     const handleChangeQuantity = (productId, product) => {
@@ -28,6 +30,7 @@ export default function ShoppingCart(props) {
         product.quantity = parseInt(selectedValue);
         setShoppingCart(shoppingCart);
         handleTotalPrice();
+        // handleCartTotalQuanity();
     };
 
     const handleCartTotalQuanity = () => {
@@ -35,8 +38,15 @@ export default function ShoppingCart(props) {
         shoppingCart.map(product => {
             cartTotal += product.quantity;
         });
+        // setTotalItems(cartTotal);
         return cartTotal;
     };
+
+    // const getTotalItems = () => totalItems;
+    // // const getCartTotal = () =>
+    // useEffect(() => {
+    //     getTotalItems();
+    // });
 
     const handleCartItems = () => {
         if (shoppingCart.length == 0) {

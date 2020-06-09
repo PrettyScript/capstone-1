@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function ProductDetails(props) {
     const { products, match } = props;
 
-    //TODO: how can I get the page to dynamically display different data?
+    const { name } = match.params;
+    console.log(name, products);
 
-    useEffect(() => {
-        // Update the document title using the browser API
-        console.log(match);
+    const displayProduct = products.map(product => {
+        if (name == product.name)
+            return (
+                <div>
+                    <p>{product.name}</p>
+                    <p>{product.serialNumber}</p>
+                    <p>{product.manufacturer}</p>
+                    <p>{product.cateogory}</p>
+                </div>
+            );
     });
-
-    let product = products[0];
 
     return (
         <div>
-            <h2>Details for: {product.name} </h2>
-            <p>{`Price: $${product.price}`}</p>
-            <p>{`Serial Number:${product.serialNumber}`}</p>
-            <p>{`Manufacturer: ${product.manufacturer}`}</p>
-            <p>{`Cateogory: ${product.cateogory}`}</p>
+            <p>{name}</p>
+            <p>{displayProduct}</p>
         </div>
     );
 }
