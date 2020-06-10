@@ -3,7 +3,13 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 
+import StripeCheckout from "react-stripe-checkout";
+
 export default function ShippingAndPayment() {
+    const handleToken = (token, addresses) => {
+        console.log({ token, addresses });
+    };
+
     return (
         <div>
             <Fragment>
@@ -91,44 +97,10 @@ export default function ShippingAndPayment() {
                             autoComplete="email"
                         />
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            id="password"
-                            name="password"
-                            label="Choose a Password"
-                            fullWidth
-                            autoComplete="password"
-                            type="password"
-                        />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            id="validatePassword"
-                            name="validatePassword"
-                            label="Re-Enter Password"
-                            fullWidth
-                            autoComplete="password"
-                            type="password"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            id="SSN"
-                            name="SSN"
-                            label="Social Security Number"
-                            fullWidth
-                            autoComplete="SSN"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            id="verifySSN"
-                            name="verifySSN"
-                            label="Re-Enter Social Security Number"
-                            fullWidth
-                            autoComplete="SSN"
-                        />
-                    </Grid>
+                    <StripeCheckout
+                        stripeKey="pk_test_51GsJLXAAc67suevO3aMIeQsubPYAiRawpoNi6pCQtOhEqRTjZr5ddwAOgGD28nEzENOdVQmhmptu74Ej2Pj8h9DW00CV9pXH69"
+                        token={handleToken}
+                    />
                 </Grid>
             </Fragment>
         </div>

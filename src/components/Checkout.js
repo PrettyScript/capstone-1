@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         width: "60vw",
-        height: "60vh",
+        // height: "60vh",
         margin: "auto",
         padding: theme.spacing(2)
     }

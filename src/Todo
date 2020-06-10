@@ -33,7 +33,7 @@
         ✔ When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
     - Checkout Page
         ✔ create a conditional for checkout link 
-        - add third party payment (Stripe) 
+        ✔ add third party payment (Stripe) 
         - Summary of purchase order (price total)
     - App.js File 
         ✔ move state from Home component to App.js and then pass props to Home and Product Details page
