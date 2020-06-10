@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -8,6 +8,20 @@ import StripeCheckout from "react-stripe-checkout";
 export default function ShippingAndPayment() {
     const handleToken = (token, addresses) => {
         console.log({ token, addresses });
+    };
+
+    const [consumerInput, setConsumerInput] = useState({
+        name: "",
+        email: "",
+        address: "",
+        contactNumber: 1010
+    });
+
+    const handleConsumerInformation = e => {
+        let firstName = document.getElementById("firstName").value;
+        console.log(firstName);
+        setConsumerInput({ name: firstName });
+        console.log(consumerInput);
     };
 
     return (
@@ -24,6 +38,7 @@ export default function ShippingAndPayment() {
                             label="First name"
                             fullWidth
                             autoComplete="given-name"
+                            onChange={() => handleConsumerInformation()}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>

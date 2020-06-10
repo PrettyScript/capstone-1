@@ -38,14 +38,36 @@ function getSteps() {
     return ["Summary", "Shipping/Payment", "Confirmation"];
 }
 
-function getStepContent(stepIndex, products, shoppingCart) {
+function getStepContent(
+    stepIndex,
+    products,
+    shoppingCart,
+    consumerName,
+    consumerEmail,
+    consumerAddress,
+    consumerContactNumber
+) {
     switch (stepIndex) {
         case 0:
             return <Summary products={products} shoppingCart={shoppingCart} />;
         case 1:
-            return <ShippingAndPayment />;
+            return (
+                <ShippingAndPayment
+                    consumerName={consumerName}
+                    consumerEmail={consumerEmail}
+                    consumerAddress={consumerAddress}
+                    consumerContactNumber={consumerContactNumber}
+                />
+            );
         case 2:
-            return <Confirmation />;
+            return (
+                <Confirmation
+                    consumerName={consumerName}
+                    consumerEmail={consumerEmail}
+                    consumerAddress={consumerAddress}
+                    consumerContactNumber={consumerContactNumber}
+                />
+            );
         default:
             return "Unknown stepIndex";
     }
@@ -64,7 +86,11 @@ export default function Checkout(props) {
         total,
         setTotal,
         totalItems,
-        setTotalItems
+        setTotalItems,
+        consumerName,
+        consumerEmail,
+        consumerAddress,
+        consumerContactNumber
     } = props;
 
     const classes = useStyles();
@@ -80,10 +106,6 @@ export default function Checkout(props) {
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1);
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
     };
 
     return (
@@ -103,7 +125,6 @@ export default function Checkout(props) {
                                 All steps completed
                             </Paper>
                         </div>
-                        <Button onClick={handleReset}>Reset</Button>
                     </div>
                 ) : (
                     <div>
@@ -112,7 +133,11 @@ export default function Checkout(props) {
                                 {getStepContent(
                                     activeStep,
                                     products,
-                                    shoppingCart
+                                    shoppingCart,
+                                    consumerName,
+                                    consumerEmail,
+                                    consumerAddress,
+                                    consumerContactNumber
                                 )}
                             </Paper>
                         </div>

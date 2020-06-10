@@ -6,6 +6,14 @@ export default function Confirmation() {
         let max = 99999;
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
+
+    const handleTodaysDate = () => {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, "0");
+        let mm = String(today.getMonth() + 1).padStart(2, "0");
+        let yyyy = today.getFullYear();
+        return (today = mm + "/" + dd + "/" + yyyy);
+    };
     return (
         <div>
             <h1>Thank You!</h1>
@@ -22,7 +30,7 @@ export default function Confirmation() {
                     <h2>Payment Method</h2>
                     <p>Stripe</p>
                     <h2>Order Date</h2>
-                    <p>Todays Date</p>
+                    <p>{handleTodaysDate()}</p>
                 </div>
                 <div>
                     <h2>Delivery Options</h2>
@@ -30,7 +38,7 @@ export default function Confirmation() {
                     <h2>Delivery Address</h2>
                     <p>1725 Slough Avenue Scranton, PA</p>
                     <h2>Contact Number</h2>
-                    <p>1234569898</p>
+                    <p>(123)456-9898</p>
                 </div>
             </div>
         </div>

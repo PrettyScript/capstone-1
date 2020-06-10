@@ -1,6 +1,6 @@
 [
     {
-        "name": "apple",
+        "name": "Black-Floral-Tutu-Dress",
         "serialNumber": 12345,
         "price": 1,
         "manufacturer": "CC",
@@ -9,7 +9,7 @@
         "avaiableUnits": 2
     },
     {
-        "name": "bananas",
+        "name": "Bunny-Ear-Hooded",
         "serialNumber": 23456,
         "price": 1,
         "manufacturer": "CC",
@@ -18,7 +18,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "carrots",
+        "name": "Floral-Bloomers",
         "serialNumber": 34567,
         "price": 1,
         "manufacturer": "CC",
@@ -27,7 +27,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "donuts",
+        "name": "Floral-Flare-Romper",
         "serialNumber": 45678,
         "price": 1,
         "manufacturer": "CC",
@@ -36,7 +36,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "mangos",
+        "name": "Get-It-From-Mama",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -45,7 +45,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "watermelon",
+        "name": "Lace-Flare-Sleeve-Dress",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -54,7 +54,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "icecream cake",
+        "name": "Lemon-Drop-Romper",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -63,7 +63,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "vanilla milkshake",
+        "name": "Lets-Taco-About-It",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -72,7 +72,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "cupcakes",
+        "name": "Little-Miss-Sassy-Pants",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -81,7 +81,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "kale",
+        "name": "My-Prince-is-Daddy",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -90,7 +90,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "chicken",
+        "name": "Polka-Dot",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",
@@ -99,7 +99,7 @@
         "avaiableUnits": 5
     },
     {
-        "name": "white rice",
+        "name": "Priscilla-Petal-Dress",
         "serialNumber": 56789,
         "price": 1,
         "manufacturer": "CC",

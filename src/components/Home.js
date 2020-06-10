@@ -1,5 +1,5 @@
 import React from "react";
-import "../Home.css";
+import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import Product from "./Product";
 
@@ -22,7 +22,12 @@ export default function Home(props) {
         ) : (
             listOfProducts.map(product => (
                 <div>
-                    <Link to={`/products/${product.name}`}>
+                    <img
+                        key={product.name}
+                        src={require(`../assets/images/${product.name}.png`)}
+                        className="img-responsive"
+                    />
+                    <Link to={`/products/${product.name}`} className="products">
                         <Product
                             key={product.id}
                             product={product}

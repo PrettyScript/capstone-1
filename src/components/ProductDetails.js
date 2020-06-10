@@ -10,6 +10,11 @@ export default function ProductDetails(props) {
         if (name == product.name)
             return (
                 <div>
+                    <img
+                        key={product.name}
+                        src={require(`../assets/images/${product.name}.png`)}
+                        className="img-responsive"
+                    />
                     <p>{product.name}</p>
                     <p>{product.serialNumber}</p>
                     <p>{product.manufacturer}</p>
@@ -27,7 +32,6 @@ export default function ProductDetails(props) {
 
     return (
         <div>
-            <p>{name}</p>
             <p>{displayProduct}</p>
         </div>
     );

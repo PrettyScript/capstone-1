@@ -21,6 +21,11 @@ function App() {
     const [isFiltered, setIsFiltered] = useState(true);
     const [totalItems, setTotalItems] = useState(0);
 
+    const [consumerName, setConsumerName] = useState();
+    const [consumerEmail, setConsumerEmail] = useState();
+    const [consumerAddress, setConsumerAddress] = useState();
+    const [consumerContactNumber, setConsumerContactNumber] = useState();
+
     const productFilter = () => {
         setFilteredProduct(
             products.filter(product => product.name.includes(inputValue))
@@ -180,6 +185,10 @@ function App() {
                                 setTotal={setTotal}
                                 totalItems={totalItems}
                                 setTotalItems={setTotalItems}
+                                consumerName={consumerName}
+                                consumerEmail={consumerEmail}
+                                consumerAddress={consumerAddress}
+                                consumerContactNumber={consumerContactNumber}
                             />
                         )}
                     />
