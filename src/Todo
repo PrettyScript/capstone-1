@@ -8,7 +8,6 @@
     - Homepage
         ✔ Inventory (Products)
         ✔ When products are added to cart, the cart should reflect the quantities
-        - When adding items to cart, add a spinner for loading 
         ✔ Ability to add items to the cart from homepage
     - Search Bar 
         ✔ Create conditionals to search for products by product name
@@ -34,13 +33,14 @@
         ✔ When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
     - Checkout Page
         ✔ create a conditional for checkout link 
-        - add third party payment (Paypal) 
+        - add third party payment (Stripe) 
         - Summary of purchase order (price total)
     - App.js File 
         ✔ move state from Home component to App.js and then pass props to Home and Product Details page
     - Overall Application
         - Add comments throughout code on what is going on
         - Add intitial to-do list to UPPER file via (github log)
+        - Remove console logs that aren't to be alerts or p tag (breadcrumb)
 
     -Style Ideas:
         - Change FavIcon

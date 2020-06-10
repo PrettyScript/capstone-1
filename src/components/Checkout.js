@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
+import Summary from "./checkoutPages/Summary";
+import ShippingAndPayment from "./checkoutPages/ShippingAndPayment";
+import Confirmation from "./checkoutPages/Confirmation";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,21 +38,34 @@ function getSteps() {
     return ["Summary", "Shipping/Payment", "Confirmation"];
 }
 
-function getStepContent(stepIndex) {
+function getStepContent(stepIndex, products, shoppingCart) {
     switch (stepIndex) {
         case 0:
-            return "Select campaign settings...";
+            return <Summary products={products} shoppingCart={shoppingCart} />;
         case 1:
-            return "What is an ad group anyways?";
+            return <ShippingAndPayment />;
         case 2:
-            return "This is the bit I really care about!";
+            return <Confirmation />;
         default:
             return "Unknown stepIndex";
     }
 }
 
 export default function Checkout(props) {
-    const { handleInventory } = props;
+    const {
+        handleInventory,
+        shoppingCart,
+        setShoppingCart,
+        products,
+        setProducts,
+        handleTotalPrice,
+        handleChangeQuantity,
+        handleCartTotalQuanity,
+        total,
+        setTotal,
+        totalItems,
+        setTotalItems
+    } = props;
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -93,7 +109,11 @@ export default function Checkout(props) {
                     <div>
                         <div className={classes.container}>
                             <Paper className={classes.paper} elevation={3}>
-                                {getStepContent(activeStep)}
+                                {getStepContent(
+                                    activeStep,
+                                    products,
+                                    shoppingCart
+                                )}
                             </Paper>
                         </div>
                         <div>

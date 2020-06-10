@@ -167,7 +167,20 @@ function App() {
                     <Route
                         path="/checkout"
                         render={() => (
-                            <Checkout handleInventory={handleInventory} />
+                            <Checkout
+                                handleInventory={handleInventory}
+                                shoppingCart={shoppingCart}
+                                setShoppingCart={setShoppingCart}
+                                products={products}
+                                setProducts={setProducts}
+                                handleTotalPrice={handleTotalPrice}
+                                handleChangeQuantity={handleChangeQuantity}
+                                handleCartTotalQuanity={handleCartTotalQuanity}
+                                total={total}
+                                setTotal={setTotal}
+                                totalItems={totalItems}
+                                setTotalItems={setTotalItems}
+                            />
                         )}
                     />
                     <Route component={NotFound} />
