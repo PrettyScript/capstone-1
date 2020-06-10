@@ -22,7 +22,7 @@ export default function Home(props) {
         ) : (
             listOfProducts.map(product => (
                 <div>
-                    <Link to={`/products/${product.name}`} product={product}>
+                    <Link to={`/products/${product.name}`}>
                         <Product
                             key={product.id}
                             product={product}

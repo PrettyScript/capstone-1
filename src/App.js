@@ -9,72 +9,17 @@ import ProductDetails from "./components/ProductDetails";
 import NotFound from "./components/NotFound";
 import Checkout from "./components/Checkout";
 
-function App() {
-    const [products, setProducts] = useState([
-        {
-            name: "apple",
-            serialNumber: 12345,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 1
-        },
-        {
-            name: "bananas",
-            serialNumber: 23456,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 1
-        },
-        {
-            name: "carrots",
-            serialNumber: 34567,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 1
-        },
-        {
-            name: "donuts",
-            serialNumber: 45678,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 1
-        },
-        {
-            name: "eggplant",
-            serialNumber: 56789,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 1
-        }
-    ]);
+import inventory from "./inventory";
 
-    const [shoppingCart, setShoppingCart] = useState([
-        {
-            name: "productName4",
-            serialNumber: 45678,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 5
-        },
-        {
-            name: "productName5",
-            serialNumber: 56789,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 5
-        }
-    ]);
+function App() {
+    const [products, setProducts] = useState(inventory);
+
+    const [shoppingCart, setShoppingCart] = useState([]);
 
     const [inputValue, setInputValue] = useState("");
     const [filteredProducts, setFilteredProduct] = useState([]);
     const [isFiltered, setIsFiltered] = useState(true);
+    const [totalItems, setTotalItems] = useState(0);
 
     const productFilter = () => {
         setFilteredProduct(
@@ -108,6 +53,7 @@ function App() {
             if (product.quantity < 5) {
                 product.quantity++;
                 setShoppingCart(shoppingCart);
+                setTotalItems(totalItems + product.quantity);
             } else {
                 setMaxQuantityReached(true);
                 console.log("You reached your max!!");
@@ -140,6 +86,20 @@ function App() {
         return cartTotal;
     };
 
+    const handleInventory = () => {
+        shoppingCart.map(product => {
+            if (product.quantity > product.avaiableUnits) {
+                console.log("Item is sold out!");
+            } else {
+                product.avaiableUnits =
+                    product.avaiableUnits - product.quantity;
+                console.log(shoppingCart);
+                setProducts(products);
+                console.log(shoppingCart);
+            }
+        });
+    };
+
     return (
         <Router>
             <div className="App">
@@ -147,6 +107,8 @@ function App() {
                     productFilter={productFilter}
                     inputValue={inputValue}
                     handleSetInputValue={handleSetInputValue}
+                    shoppingCart={shoppingCart}
+                    handleCartTotalQuanity={handleCartTotalQuanity}
                 />
                 <Switch>
                     <Route
@@ -181,6 +143,8 @@ function App() {
                                 handleCartTotalQuanity={handleCartTotalQuanity}
                                 total={total}
                                 setTotal={setTotal}
+                                totalItems={totalItems}
+                                setTotalItems={setTotalItems}
                             />
                         )}
                     />
@@ -200,7 +164,12 @@ function App() {
                             />
                         )}
                     />
-                    <Route path="/checkout" component={Checkout} />
+                    <Route
+                        path="/checkout"
+                        render={() => (
+                            <Checkout handleInventory={handleInventory} />
+                        )}
+                    />
                     <Route component={NotFound} />
                 </Switch>
             </div>

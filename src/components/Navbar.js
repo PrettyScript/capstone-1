@@ -81,7 +81,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Navbar(props) {
-    const { inputValue, searchProductRequest, handleSetInputValue } = props;
+    const {
+        inputValue,
+        searchProductRequest,
+        handleSetInputValue,
+        handleCartTotalQuanity
+    } = props;
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -207,7 +212,10 @@ export default function Navbar(props) {
                                 aria-label="show 4 new mails"
                                 color="inherit"
                             >
-                                <Badge badgeContent={3} color="secondary">
+                                <Badge
+                                    badgeContent={handleCartTotalQuanity()}
+                                    color="secondary"
+                                >
                                     <ShoppingCartIcon />
                                 </Badge>
                             </IconButton>

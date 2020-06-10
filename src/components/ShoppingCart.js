@@ -11,14 +11,13 @@ export default function ShoppingCart(props) {
         handleChangeQuantity,
         handleCartTotalQuanity,
         total,
-        setTotal
+        setTotal,
+        totalItems,
+        setTotalItems
     } = props;
-
-    const [totalItems, setTotalItems] = useState(0);
 
     useEffect(() => {
         handleTotalPrice();
-        console.log(total);
     });
 
     const handleDeleteProduct = itemToBeRemoved => {
@@ -40,7 +39,9 @@ export default function ShoppingCart(props) {
                     <p>{`Your cart has ${handleCartTotalQuanity()} items in it!`}</p>{" "}
                     {shoppingCart.map(product => (
                         <div>
-                            <p>{product.name}</p>
+                            <Link to={`/products/${product.name}`}>
+                                <p>{product.name}</p>
+                            </Link>
                             <p>{`$${product.price}`}</p>
                             <select
                                 id={`${product.name}-select`}

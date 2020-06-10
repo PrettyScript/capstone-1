@@ -25,11 +25,11 @@
         ✔ Display items in Cart 
         ✔ Remove unwanted items
         ✔ Purchase items - Checkout button (Checkout Page)
-        - Go back to items page
+        ✔ Go back to items page
         ✔ Increase/Decrease quantities of each item
         ✔ Total price of cart
         ✔ Total items in cart
-        - Continue Shopping link (links to homepage with products)
+        ✔ Continue Shopping link (links to homepage with products)
         ✔ Check that total price doesn't show as undefined, before cart manipulation
         ✔ When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
     - Checkout Page
