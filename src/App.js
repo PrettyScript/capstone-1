@@ -41,7 +41,7 @@ function App() {
 
     // search bar : useEffect took care of the lagging of input value
     // the product filter function will run when filter is false
-    // isFilter useState is true
+    // isFilter initial state is true
     useEffect(() => {
         handleSetInputValue();
         // prevents infinite while loop
@@ -50,8 +50,9 @@ function App() {
         }
     });
 
-    // search bar: sets the user input value when the input value is not an empty string
-    // input's useState is an empty string
+    // search bar: sets the user input value when the input value state variable does not equal the search
+    // bar value, this function keeps the inputValue and the searchbar value in sync.
+    // input's initial state is an empty string
     const handleSetInputValue = () => {
         if (inputValue !== document.getElementById("searchBar").value) {
             setIsFiltered(false);
@@ -59,8 +60,10 @@ function App() {
         }
     };
 
-    // search bar: sets the new array setFiltered to the filter of
-    // case sensitive products in the product array
+    // search bar: sets the FilteredProduct array to contain elements
+    // that match the provided search input value. Added .toLowerCase()
+    // to make the function case-insensitive. If no filter provided, ALL
+    // products are shown
     const productFilter = () => {
         setFilteredProduct(
             products.filter(product =>
@@ -116,7 +119,7 @@ function App() {
     };
 
     // shoppingCart: displays the total products in the shopping cart
-    // shopping cart is mapped and the product.quantity is added to the cartTotal
+    // shopping cart is mapped and the product.quantity of each product is added to the cartTotal
     const handleCartTotalQuantity = () => {
         let cartTotal = 0;
         shoppingCart.map(product => {
@@ -138,15 +141,19 @@ function App() {
             } else {
                 product.availableUnits =
                     product.availableUnits - product.quantity;
-                console.log(shoppingCart);
+
                 setProducts(products);
                 console.log(shoppingCart);
             }
         });
         if (soldOutItems.length > 1) {
             alert(`${soldOutItems.join(", ")} are sold out!`);
+            shoppingCart.map(product => (product.quantity = 1));
+            setShoppingCart([]);
         } else if (soldOutItems.length == 1) {
             alert(`${soldOutItems[0]} is sold out!`);
+            shoppingCart.map(product => (product.quantity = 1));
+            setShoppingCart([]);
         }
         soldOutItems = [];
         return true;

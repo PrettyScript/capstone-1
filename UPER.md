@@ -61,7 +61,7 @@ Carry out the necessary steps, one code at a time!
 
 <h2>
     4. Reflection / Refactor
-    This was a monster size of a project, as I was working on it, I kept a to-do list (as provided above) and I would always find something to add to the list. I started by using mock data in the appropriate components and once I was getting near the end where everything was working like it should I moved functions and variables that that would be used throughout the project to app.js where it would be easy to pass data down through props. The biggest challenge that I faced was dynamically rendering data on a page. After searching online and trial and errors on my end, I was able to the pages to render. It was a matter of understanding what properties that router was passing to the component that I had access to. The overall management system works very well. 
 </h2>
-
-\* \* \* \* \* \* \*
+<p>
+    This was a monster size of a project, as I was working on it, I kept a to-do list (as provided above) and I would always find something to add to the list. I started by using mock data in the appropriate components and once I was getting near the end where everything was working like it should I moved functions and variables that that would be used throughout the project to app.js where it would be easy to pass data down through props. The biggest challenge that I faced was dynamically rendering data on a page. After searching online and trial and errors on my end, I was able to the pages to render. It was a matter of understanding what properties that router was passing to the component that I had access to. The overall management system works very well. 
+</p>
