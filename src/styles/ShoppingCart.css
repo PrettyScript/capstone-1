@@ -35,19 +35,11 @@
 
 .cartTotalQuantity {
     background-color: #f5cac3;
-    width: 200px;
+    width: 220px;
     margin: auto;
 }
 
 .proceedToCheckbox {
     text-decoration: none;
     color: whitesmoke;
-}
-
-.cartSelect {
-    /* background-color: #ee9a9a; */
-}
-
-.selectButton {
-    /* background-color: #ee9a9a; */
 }

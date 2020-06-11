@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Product from "./Product";
 import Button from "@material-ui/core/Button";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import "../styles/ShoppingCart.css";
 
 export default function ShoppingCart(props) {
@@ -41,11 +39,10 @@ export default function ShoppingCart(props) {
         } else {
             return (
                 <div className="shoppingCartContainer">
-                    <p className="cartTotalQuantity">{`Your cart has ${handleCartTotalQuanity()} items in it!`}</p>{" "}
+                    <p className="cartTotalQuantity">{`Your cart has ${handleCartTotalQuanity()} item(s) in it!`}</p>{" "}
                     {shoppingCart.map(product => (
                         <div className="products">
                             <Link
-                                // style={{ textDecoration: "none" }}
                                 to={`/products/${product.name}`}
                                 className="shoppingCartProduct"
                             >

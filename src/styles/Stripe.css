@@ -1,6 +1,6 @@
 .stripe span {
-    border: 2px black solid;
+    /* border: 2px black solid; */
     margin: auto;
-    color: red;
+    color: #f6a4eb;
     background-image: red;
 }

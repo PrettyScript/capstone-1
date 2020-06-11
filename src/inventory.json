@@ -2,7 +2,7 @@
     {
         "name": "Black-Floral-Tutu-Dress",
         "serialNumber": 12345,
-        "price": 1,
+        "price": 15.99,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -11,7 +11,7 @@
     {
         "name": "Bunny-Ear-Hooded",
         "serialNumber": 23456,
-        "price": 1,
+        "price": 20.0,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -20,7 +20,7 @@
     {
         "name": "Floral-Bloomers",
         "serialNumber": 34567,
-        "price": 1,
+        "price": 15.99,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -29,7 +29,7 @@
     {
         "name": "Floral-Flare-Romper",
         "serialNumber": 45678,
-        "price": 1,
+        "price": 10.2,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -38,7 +38,7 @@
     {
         "name": "Get-It-From-Mama",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 11.0,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -47,7 +47,7 @@
     {
         "name": "Lace-Flare-Sleeve-Dress",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 15.0,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -56,7 +56,7 @@
     {
         "name": "Lemon-Drop-Romper",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 14.99,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -65,7 +65,7 @@
     {
         "name": "Lets-Taco-About-It",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 15.2,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -74,7 +74,7 @@
     {
         "name": "Little-Miss-Sassy-Pants",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 10.0,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -83,7 +83,7 @@
     {
         "name": "My-Prince-is-Daddy",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 19.0,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -92,7 +92,7 @@
     {
         "name": "Polka-Dot",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 22.99,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,
@@ -101,7 +101,7 @@
     {
         "name": "Priscilla-Petal-Dress",
         "serialNumber": 56789,
-        "price": 1,
+        "price": 31.99,
         "manufacturer": "CC",
         "cateogory": "clothing",
         "quantity": 1,

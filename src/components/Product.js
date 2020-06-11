@@ -1,12 +1,10 @@
 import React from "react";
 import "../styles/Product.css";
-// import images from "../../public/images";
 
 export default function Product(props) {
-    const { products, setproducts, product } = props;
+    const { product } = props;
 
     return (
-        // <div className="product">
         <div>
             <img
                 key={product.name}

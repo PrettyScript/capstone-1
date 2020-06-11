@@ -27,7 +27,7 @@ export default function Confirmation() {
             <div className="orderContainer">
                 <div>
                     <h3>Email</h3>
-                    <p>janedoe@gmail.com</p>
+                    <p>jessicadelcyulysse@gmail.com</p>
                     <h3>Payment Method</h3>
                     <p>Stripe</p>
                     <h3>Order Date</h3>

@@ -3,13 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 
-import StripeCheckout from "react-stripe-checkout";
-
 export default function ShippingAndPayment() {
-    const handleToken = (token, addresses) => {
-        console.log({ token, addresses });
-    };
-
     const [consumerInput, setConsumerInput] = useState({});
 
     const handleConsumerInformation = (key, value) => {
@@ -31,6 +25,7 @@ export default function ShippingAndPayment() {
                             id="firstName"
                             name="firstName"
                             label="First name"
+                            value="Jessica"
                             fullWidth
                             autoComplete="given-name"
                             onChange={e =>
@@ -46,6 +41,7 @@ export default function ShippingAndPayment() {
                             id="lastName"
                             name="lastName"
                             label="Last name"
+                            value="Ulysse"
                             fullWidth
                             autoComplete="family-name"
                             onChange={e =>
@@ -61,6 +57,7 @@ export default function ShippingAndPayment() {
                             id="address1"
                             name="address1"
                             label="Address line 1"
+                            value="1725 Slough Avenue"
                             fullWidth
                             autoComplete="billing address-line1"
                             onChange={e =>
@@ -91,8 +88,9 @@ export default function ShippingAndPayment() {
                             id="city"
                             name="city"
                             label="City"
+                            value="Scranton"
                             fullWidth
-                            autoComplete="billing city"
+                            autoComplete="billing address-level2"
                             onChange={e =>
                                 handleConsumerInformation(
                                     "city",
@@ -106,6 +104,7 @@ export default function ShippingAndPayment() {
                             id="state"
                             name="state"
                             label="State/Province/Region"
+                            value="PA"
                             fullWidth
                             onChange={e =>
                                 handleConsumerInformation(
@@ -120,6 +119,7 @@ export default function ShippingAndPayment() {
                             id="zip"
                             name="zip"
                             label="Zip / Postal Code"
+                            value="78900"
                             fullWidth
                             autoComplete="billing postal-code"
                             onChange={e =>
@@ -135,6 +135,7 @@ export default function ShippingAndPayment() {
                             id="country"
                             name="country"
                             label="Country"
+                            value="US"
                             fullWidth
                             autoComplete="billing country"
                             onChange={e =>
@@ -150,6 +151,7 @@ export default function ShippingAndPayment() {
                             id="email"
                             name="email"
                             label="Email"
+                            value="jessicadelcyulysse@gmail.com"
                             fullWidth
                             autoComplete="email"
                             onChange={e =>
@@ -165,9 +167,3 @@ export default function ShippingAndPayment() {
         </div>
     );
 }
-
-// <StripeCheckout
-//                         className="stripe"
-//                         stripeKey="pk_test_51GsJLXAAc67suevO3aMIeQsubPYAiRawpoNi6pCQtOhEqRTjZr5ddwAOgGD28nEzENOdVQmhmptu74Ej2Pj8h9DW00CV9pXH69"
-//                         token={handleToken}
-//                     />

@@ -6,14 +6,10 @@ import Button from "@material-ui/core/Button";
 
 export default function Home(props) {
     const {
-        shoppingCart,
-        setShoppingCart,
         products,
         setProducts,
         filteredProducts,
         handleAddingItemsToCart,
-        maxQuantityReached,
-        setMaxQuantityReached,
         inputValue
     } = props;
 
@@ -35,6 +31,7 @@ export default function Home(props) {
                                 setProducts={setProducts}
                             />
                         </Link>
+                        <p>${product.price.toFixed(2)}</p>
                         <Button
                             variant="contained"
                             color="primary"
@@ -58,7 +55,3 @@ export default function Home(props) {
         </div>
     );
 }
-
-// <header className="App-header">
-//                 <h1>Limited Stock</h1>
-//             </header>

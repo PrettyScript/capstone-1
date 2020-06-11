@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 import red from "@material-ui/core/colors/red";
 
 import Navbar from "./components/Navbar";
@@ -26,27 +26,18 @@ const AppTheme = createMuiTheme({
 function App() {
     const [products, setProducts] = useState(inventory);
 
-    const [shoppingCart, setShoppingCart] = useState([
-        {
-            name: "Bunny-Ear-Hooded",
-            serialNumber: 23456,
-            price: 1,
-            manufacturer: "CC",
-            cateogory: "clothing",
-            quantity: 1,
-            avaiableUnits: 5
-        }
-    ]);
+    const [shoppingCart, setShoppingCart] = useState([]);
 
     const [inputValue, setInputValue] = useState("");
     const [filteredProducts, setFilteredProduct] = useState([]);
     const [isFiltered, setIsFiltered] = useState(true);
     const [totalItems, setTotalItems] = useState(0);
-
     const [consumerName, setConsumerName] = useState();
     const [consumerEmail, setConsumerEmail] = useState();
     const [consumerAddress, setConsumerAddress] = useState();
     const [consumerContactNumber, setConsumerContactNumber] = useState();
+    const [maxQuantityReached, setMaxQuantityReached] = useState(false);
+    const [total, setTotal] = useState(0);
 
     const productFilter = () => {
         setFilteredProduct(
@@ -74,10 +65,6 @@ function App() {
         }
     });
 
-    const [maxQuantityReached, setMaxQuantityReached] = useState(false);
-
-    const [total, setTotal] = useState(0);
-
     const handleAddingItemsToCart = product => {
         // update the cart badge
         console.log("added");
@@ -100,7 +87,7 @@ function App() {
         shoppingCart.map(product => {
             newTotal += product.price * product.quantity;
         });
-        setTotal(newTotal);
+        setTotal(newTotal.toFixed(2));
     };
 
     const handleChangeQuantity = (productId, product) => {
@@ -119,9 +106,10 @@ function App() {
     };
 
     const handleInventory = () => {
+        let soldOutItems = [];
         shoppingCart.map(product => {
             if (product.quantity > product.avaiableUnits) {
-                console.log("Item is sold out!");
+                soldOutItems.push(product.name);
             } else {
                 product.avaiableUnits =
                     product.avaiableUnits - product.quantity;
@@ -130,6 +118,13 @@ function App() {
                 console.log(shoppingCart);
             }
         });
+        if (soldOutItems.length > 1) {
+            alert(`${soldOutItems.join(", ")} are sold out!`);
+        } else if (soldOutItems.length == 1) {
+            alert(`${soldOutItems[0]} is sold out!`);
+        }
+        soldOutItems = [];
+        return true;
     };
 
     return (
@@ -225,6 +220,7 @@ function App() {
                                     consumerContactNumber={
                                         consumerContactNumber
                                     }
+                                    handleInventory={handleInventory}
                                 />
                             )}
                         />

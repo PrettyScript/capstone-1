@@ -1,13 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Box from "@material-ui/core/Box";
 import Summary from "./checkoutPages/Summary";
 import ShippingAndPayment from "./checkoutPages/ShippingAndPayment";
 import Confirmation from "./checkoutPages/Confirmation";
@@ -29,7 +26,6 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         width: "60vw",
-        // height: "60vh",
         margin: "auto",
         padding: theme.spacing(2)
     }
@@ -78,20 +74,12 @@ export default function Checkout(props) {
     const {
         handleInventory,
         shoppingCart,
-        setShoppingCart,
         products,
-        setProducts,
-        handleTotalPrice,
-        handleChangeQuantity,
-        handleCartTotalQuanity,
-        total,
-        setTotal,
-        totalItems,
-        setTotalItems,
         consumerName,
         consumerEmail,
         consumerAddress,
-        consumerContactNumber
+        consumerContactNumber,
+        setShoppingCart
     } = props;
 
     const classes = useStyles();
@@ -100,8 +88,11 @@ export default function Checkout(props) {
     const steps = getSteps();
 
     const handleNext = () => {
-        if (activeStep === steps.length - 1) {
+        if (activeStep === 0) {
             handleInventory();
+            // if (handleInventory()) {
+            //     setActiveStep(activeStep - 1);
+            // }
         }
         setActiveStep(prevActiveStep => prevActiveStep + 1);
     };
@@ -156,6 +147,9 @@ export default function Checkout(props) {
                                 <Stripe
                                     setActiveStep={setActiveStep}
                                     activeStep={activeStep}
+                                    setPaymentSubmitted={setPaymentSubmitted}
+                                    setShoppingCart={setShoppingCart}
+                                    shoppingCart={shoppingCart}
                                 />
                             ) : (
                                 <Button
