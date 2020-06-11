@@ -31,8 +31,6 @@ export default function Summary(props) {
 
     const { products, shoppingCart } = props;
 
-    console.log(products);
-
     return (
         <div className={classes.root}>
             {shoppingCart.map(product => (

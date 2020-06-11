@@ -45,6 +45,7 @@ function getStepContent(
     consumerAddress,
     consumerContactNumber
 ) {
+    // checkout: built in case from material-ui, depending on the page a specific component is displayed
     switch (stepIndex) {
         case 0:
             return <Summary products={products} shoppingCart={shoppingCart} />;
@@ -88,6 +89,9 @@ export default function Checkout(props) {
     const [paymentSubmitted, setPaymentSubmitted] = React.useState(false);
     const steps = getSteps();
 
+    // checkoutPage: there's a check in inventory before a customer can make a purchase, if that product
+    // is unavailable there is an alert that let's the customer know that the product is sold out, otherwise
+    // the customer will proceed with the checkout process
     const handleNext = () => {
         if (activeStep === 0) {
             handleInventory();

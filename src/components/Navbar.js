@@ -11,7 +11,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import "../styles/Navbar.css";
@@ -86,23 +85,18 @@ export default function Navbar(props) {
         inputValue,
         searchProductRequest,
         handleSetInputValue,
-        handleCartTotalQuanity
+        handleCartTotalQuantity
     } = props;
 
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const isMenuOpen = Boolean(anchorEl);
 
     const menuId = "primary-search-account-menu";
     const renderMenu = (
         <Menu
-            anchorEl={anchorEl}
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             id={menuId}
             keepMounted
             transformOrigin={{ vertical: "top", horizontal: "right" }}
-            open={isMenuOpen}
         >
             <MenuItem>Profile</MenuItem>
             <MenuItem>My account</MenuItem>
@@ -150,7 +144,7 @@ export default function Navbar(props) {
                                 color="default"
                             >
                                 <Badge
-                                    badgeContent={handleCartTotalQuanity()}
+                                    badgeContent={handleCartTotalQuantity()}
                                     color="secondary"
                                 >
                                     <ShoppingCartIcon />

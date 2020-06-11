@@ -8,6 +8,9 @@ export default function ProductDetails(props) {
 
     const { name } = match.params;
 
+    // productDetails: dynamically displays the corresponding products with the
+    // products details: name, serial number, category and a button to add that
+    // specific product to the cart
     const displayProduct = products.map(product => {
         if (name == product.name)
             return (
@@ -20,7 +23,7 @@ export default function ProductDetails(props) {
                     <div className="info">
                         <p>Serial Number: {product.serialNumber}</p>
                         <p>Manufacturer: {product.manufacturer}</p>
-                        <p>Cateogory: {product.cateogory}</p>
+                        <p>Category: {product.category}</p>
                     </div>
 
                     <Button

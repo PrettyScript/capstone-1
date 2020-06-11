@@ -4,15 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 
 export default function ShippingAndPayment() {
-    const [consumerInput, setConsumerInput] = useState({});
-
-    const handleConsumerInformation = (key, value) => {
-        let info = {};
-        info[key] = value;
-        setConsumerInput({ ...consumerInput, info });
-        console.log(consumerInput);
-    };
-
     return (
         <div>
             <Fragment>
@@ -28,12 +19,6 @@ export default function ShippingAndPayment() {
                             value="Jessica"
                             fullWidth
                             autoComplete="given-name"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "firstName",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -44,12 +29,6 @@ export default function ShippingAndPayment() {
                             value="Ulysse"
                             fullWidth
                             autoComplete="family-name"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "lastName",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -60,12 +39,6 @@ export default function ShippingAndPayment() {
                             value="1725 Slough Avenue"
                             fullWidth
                             autoComplete="billing address-line1"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "deliveryAddress1",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -75,12 +48,6 @@ export default function ShippingAndPayment() {
                             label="Address line 2"
                             fullWidth
                             autoComplete="billing address-line2"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "deliveryAddress2",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -91,12 +58,6 @@ export default function ShippingAndPayment() {
                             value="Scranton"
                             fullWidth
                             autoComplete="billing address-level2"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "city",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -106,12 +67,6 @@ export default function ShippingAndPayment() {
                             label="State/Province/Region"
                             value="PA"
                             fullWidth
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "state",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -122,12 +77,6 @@ export default function ShippingAndPayment() {
                             value="78900"
                             fullWidth
                             autoComplete="billing postal-code"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "postalCode",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -138,12 +87,6 @@ export default function ShippingAndPayment() {
                             value="US"
                             fullWidth
                             autoComplete="billing country"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "country",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -154,12 +97,6 @@ export default function ShippingAndPayment() {
                             value="jessicadelcyulysse@gmail.com"
                             fullWidth
                             autoComplete="email"
-                            onChange={e =>
-                                handleConsumerInformation(
-                                    "email",
-                                    e.target.value
-                                )
-                            }
                         />
                     </Grid>
                 </Grid>

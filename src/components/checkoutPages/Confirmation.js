@@ -20,7 +20,7 @@ export default function Confirmation() {
             <h1>Thank You!</h1>
             <p>
                 We are getting started on your order right away, you will
-                recieve an order confirmation shortly.
+                receive an order confirmation shortly.
             </p>
             <h2>Order Details - {generateOrderReferenceNumber()}</h2>
 

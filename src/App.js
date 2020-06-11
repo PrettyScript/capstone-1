@@ -39,6 +39,28 @@ function App() {
     const [maxQuantityReached, setMaxQuantityReached] = useState(false);
     const [total, setTotal] = useState(0);
 
+    // search bar : useEffect took care of the lagging of input value
+    // the product filter function will run when filter is false
+    // isFilter useState is true
+    useEffect(() => {
+        handleSetInputValue();
+        // prevents infinite while loop
+        if (!isFiltered) {
+            productFilter();
+        }
+    });
+
+    // search bar: sets the user input value when the input value is not an empty string
+    // input's useState is an empty string
+    const handleSetInputValue = () => {
+        if (inputValue !== document.getElementById("searchBar").value) {
+            setIsFiltered(false);
+            setInputValue(document.getElementById("searchBar").value);
+        }
+    };
+
+    // search bar: sets the new array setFiltered to the filter of
+    // case sensitive products in the product array
     const productFilter = () => {
         setFilteredProduct(
             products.filter(product =>
@@ -51,23 +73,14 @@ function App() {
         setIsFiltered(true);
     };
 
-    const handleSetInputValue = () => {
-        if (inputValue !== document.getElementById("searchBar").value) {
-            setIsFiltered(false);
-            setInputValue(document.getElementById("searchBar").value);
-        }
-    };
-
-    useEffect(() => {
-        handleSetInputValue();
-        if (!isFiltered) {
-            productFilter();
-        }
-    });
-
+    // shoppingCart: add products to the cart by an add to cart button that accounts for the,
+    // product that is being added. There is a conditional to check if a product is
+    // already in the cart, if a product is already
+    // in the cart then that quantity is increased (+1), and there is additional check
+    // that a user cannot exceed the alloted quantity of 5. If the max number of 5 is reached then
+    // the additional products will not be added to the cart. For any product that hasn't been
+    // added to cart will then be added to the cart.
     const handleAddingItemsToCart = product => {
-        // update the cart badge
-        console.log("added");
         if (shoppingCart.includes(product)) {
             if (product.quantity < 5) {
                 product.quantity++;
@@ -82,6 +95,8 @@ function App() {
         }
     };
 
+    // shoppingCart: maps through the products in the shopping cart and multiples the price to the quantity of each product and the results of the multiplication is then added to the newTotal which then sets
+    // the total
     const handleTotalPrice = () => {
         let newTotal = 0;
         shoppingCart.map(product => {
@@ -90,6 +105,9 @@ function App() {
         setTotal(newTotal.toFixed(2));
     };
 
+    // shoppingCart: takes care of the change in quantity in the cart, in the case of
+    // adding/subtracting products from your cart, when this function run, the handleTotalPrice
+    // also runs so that the total price is reflected as well
     const handleChangeQuantity = (productId, product) => {
         let selectedValue = document.getElementById(productId).value;
         product.quantity = parseInt(selectedValue);
@@ -97,7 +115,9 @@ function App() {
         handleTotalPrice();
     };
 
-    const handleCartTotalQuanity = () => {
+    // shoppingCart: displays the total products in the shopping cart
+    // shopping cart is mapped and the product.quantity is added to the cartTotal
+    const handleCartTotalQuantity = () => {
         let cartTotal = 0;
         shoppingCart.map(product => {
             cartTotal += product.quantity;
@@ -105,14 +125,19 @@ function App() {
         return cartTotal;
     };
 
+    //shoppingCart: shoppingCart is mapped by it's product, the first check is, if the amount of products exceeds
+    // the available products in inventory then the names of the product(s) is pushed to a new array called soldOutItem
+    // else the products that are being sold is subtracted from the inventory and the inventory is updated.  The second if check
+    // is in the case that there are products in the soldOutItems array, depending on the length of the array the alert will
+    // return a plural/non-plural sentence.
     const handleInventory = () => {
         let soldOutItems = [];
         shoppingCart.map(product => {
-            if (product.quantity > product.avaiableUnits) {
+            if (product.quantity > product.availableUnits) {
                 soldOutItems.push(product.name);
             } else {
-                product.avaiableUnits =
-                    product.avaiableUnits - product.quantity;
+                product.availableUnits =
+                    product.availableUnits - product.quantity;
                 console.log(shoppingCart);
                 setProducts(products);
                 console.log(shoppingCart);
@@ -136,7 +161,7 @@ function App() {
                         inputValue={inputValue}
                         handleSetInputValue={handleSetInputValue}
                         shoppingCart={shoppingCart}
-                        handleCartTotalQuanity={handleCartTotalQuanity}
+                        handleCartTotalQuantity={handleCartTotalQuantity}
                     />
                     <Switch>
                         <Route
@@ -170,8 +195,8 @@ function App() {
                                     setProducts={setProducts}
                                     handleTotalPrice={handleTotalPrice}
                                     handleChangeQuantity={handleChangeQuantity}
-                                    handleCartTotalQuanity={
-                                        handleCartTotalQuanity
+                                    handleCartTotalQuantity={
+                                        handleCartTotalQuantity
                                     }
                                     total={total}
                                     setTotal={setTotal}
@@ -207,8 +232,8 @@ function App() {
                                     setProducts={setProducts}
                                     handleTotalPrice={handleTotalPrice}
                                     handleChangeQuantity={handleChangeQuantity}
-                                    handleCartTotalQuanity={
-                                        handleCartTotalQuanity
+                                    handleCartTotalQuantity={
+                                        handleCartTotalQuantity
                                     }
                                     total={total}
                                     setTotal={setTotal}
