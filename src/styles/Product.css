@@ -1,0 +1,15 @@
+.product {
+    cursor: pointer;
+}
+
+.img-responsive {
+    width: 20rem;
+    height: 20rem;
+    box-shadow: 0px 0px 10px #ee9a9a;
+}
+
+.img-responsive:hover {
+    width: 20rem;
+    height: 20rem;
+    box-shadow: 0px 0px 30px #ee9a9a;
+}

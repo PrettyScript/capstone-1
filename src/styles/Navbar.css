@@ -1,0 +1,7 @@
+.navbarLink {
+    text-decoration: none;
+}
+
+.navbarLink:visited {
+    color: white;
+}

@@ -1,0 +1,39 @@
+.shoppingCartContainer {
+    padding-bottom: 2rem;
+}
+
+.products {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    text-decoration: none;
+}
+
+.productsLink {
+    color: red;
+}
+
+.shoppingCartProduct img {
+    width: 10rem;
+    height: 10rem;
+}
+
+.shoppingCartProduct img:hover {
+    width: 10rem;
+    height: 10rem;
+}
+
+.shoppingCartProduct {
+    text-decoration: none;
+    color: gray;
+}
+
+.cartTotalQuantity {
+    background-color: #f5cac3;
+    width: 220px;
+    margin: auto;
+}
+
+.proceedToCheckbox {
+    text-decoration: none;
+    color: whitesmoke;
+}
