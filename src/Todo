@@ -36,10 +36,9 @@
     - App.js File 
         ✔ move state from Home component to App.js and then pass props to Home and Product Details page
     - Overall Application
-        - Add comments throughout code on what is going on
-        - Add intitial to-do list to UPPER file via (github log)
         ✔ Remove console logs that are meant to be alerts or p tag
 
+- Add comments throughout code on what is going on
 
 - Challenges
     - React Router not easy to configure w/ material-ui

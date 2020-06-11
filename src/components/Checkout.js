@@ -12,7 +12,8 @@ import Stripe from "../components/checkoutPages/Stripe";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "100%"
+        width: "100%",
+        paddingBottom: "2rem"
     },
     backButton: {
         marginRight: theme.spacing(1)

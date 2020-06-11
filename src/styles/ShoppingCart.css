@@ -1,11 +1,5 @@
 .shoppingCartContainer {
-    /* width: 50vw;
-    height: 50vh; */
-    /* border: 3px solid yellow; */
-    /* display: flex; */
-    /* flex-direction: column;
-    justify-content: left; */
-    /* align-content: center; */
+    padding-bottom: 2rem;
 }
 
 .products {

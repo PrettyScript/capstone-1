@@ -18,6 +18,46 @@ Regarding the architecture of the system, I plan to manage the state locally as 
     3. Executing the Plan
 </h2>
 Carry out the necessary steps, one code at a time!
+```
+- Breakdown components
+    - Navbar
+        ✔ Configure Search Bar 
+        ✔ Shopping Cart 
+        ✔ Create a 404 Page done
+    - Homepage
+        ✔ Inventory (Products)
+        ✔ When products are added to cart, the cart should reflect the quantities
+        ✔ Ability to add items to the cart from homepage
+    - Search Bar 
+        ✔ Create conditionals to search for products by product name
+    - Inventory   
+        ✔ Page for each item, with the:
+            Product Name
+            Serial Number
+            Price
+            Manufacturer
+            Category / Tag
+        ✔ Ability to add items to the cart from product page
+    - Shopping Cart
+        ✔ Display items in Cart 
+        ✔ Remove unwanted items
+        ✔ Purchase items - Checkout button (Checkout Page)
+        ✔ Go back to items page
+        ✔ Increase/Decrease quantities of each item
+        ✔ Total price of cart
+        ✔ Total items in cart
+        ✔ Continue Shopping link (links to homepage with products)
+        ✔ Check that total price doesn't show as undefined, before cart manipulation
+        ✔ When products are being added to cart from homepage, the cart price total and quantity are not being reflected in shopping cart
+    - Checkout Page
+        ✔ create a conditional for checkout link 
+        ✔ add third party payment (Stripe) 
+        ✔ Summary of purchase order (price total)
+    - App.js File 
+        ✔ move state from Home component to App.js and then pass props to Home and Product Details page
+    - Overall Application
+        ✔ Remove console logs that are meant to be alerts or p tag
+```
 <h2>
     4. Reflection / Refactor
 </h2>
