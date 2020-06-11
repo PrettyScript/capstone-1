@@ -10,7 +10,11 @@
 }
 
 .products {
+    color: gray;
+}
+
+.productContainer {
+    padding-top: 1rem;
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
-    grid-gap: 5px;
+    grid-template-columns: auto auto auto;
 }

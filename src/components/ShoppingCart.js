@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Product from "./Product";
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import "../styles/ShoppingCart.css";
 
 export default function ShoppingCart(props) {
     const {
@@ -35,15 +40,25 @@ export default function ShoppingCart(props) {
             return <p>Your cart is empty, go shopping!</p>;
         } else {
             return (
-                <div>
-                    <p>{`Your cart has ${handleCartTotalQuanity()} items in it!`}</p>{" "}
+                <div className="shoppingCartContainer">
+                    <p className="cartTotalQuantity">{`Your cart has ${handleCartTotalQuanity()} items in it!`}</p>{" "}
                     {shoppingCart.map(product => (
-                        <div>
-                            <Link to={`/products/${product.name}`}>
-                                <p>{product.name}</p>
+                        <div className="products">
+                            <Link
+                                // style={{ textDecoration: "none" }}
+                                to={`/products/${product.name}`}
+                                className="shoppingCartProduct"
+                            >
+                                <Product
+                                    key={product.id}
+                                    product={product}
+                                    products={products}
+                                    setProducts={setProducts}
+                                />
                             </Link>
                             <p>{`$${product.price}`}</p>
                             <select
+                                className="cartSelect"
                                 id={`${product.name}-select`}
                                 onChange={() =>
                                     handleChangeQuantity(
@@ -60,17 +75,23 @@ export default function ShoppingCart(props) {
                                     )
                                 )}
                             </select>
-                            <button
+                            <Button
+                                color="primary"
+                                className="selectButton"
                                 onClick={() => {
                                     handleDeleteProduct(product);
                                 }}
                             >
                                 Delete
-                            </button>
+                            </Button>
                         </div>
                     ))}
                     <p>{`Your total is $${total}`}</p>
-                    <Link to="/checkout">Proceed to Checkout</Link>
+                    <Button variant="contained" color="primary">
+                        <Link className="proceedToCheckbox" to="/checkout">
+                            Proceed to Checkout
+                        </Link>
+                    </Button>
                 </div>
             );
         }

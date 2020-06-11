@@ -1,0 +1,16 @@
+.productContainer {
+    text-align: center;
+}
+
+.productDetails {
+    box-shadow: 0 0 3px gray;
+    width: 340px;
+    margin: auto;
+    padding: 1rem;
+}
+
+.info {
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}

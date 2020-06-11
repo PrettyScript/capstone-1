@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
 
 import Navbar from "./components/Navbar";
 import ShoppingCart from "./components/ShoppingCart";
@@ -11,10 +14,29 @@ import Checkout from "./components/Checkout";
 
 import inventory from "./inventory";
 
+const AppTheme = createMuiTheme({
+    palette: {
+        primary: {
+            main: red[200],
+            contrastText: red[50]
+        }
+    }
+});
+
 function App() {
     const [products, setProducts] = useState(inventory);
 
-    const [shoppingCart, setShoppingCart] = useState([]);
+    const [shoppingCart, setShoppingCart] = useState([
+        {
+            name: "Bunny-Ear-Hooded",
+            serialNumber: 23456,
+            price: 1,
+            manufacturer: "CC",
+            cateogory: "clothing",
+            quantity: 1,
+            avaiableUnits: 5
+        }
+    ]);
 
     const [inputValue, setInputValue] = useState("");
     const [filteredProducts, setFilteredProduct] = useState([]);
@@ -28,7 +50,12 @@ function App() {
 
     const productFilter = () => {
         setFilteredProduct(
-            products.filter(product => product.name.includes(inputValue))
+            products.filter(product =>
+                product.name
+                    .replace(/-/g, " ")
+                    .toLowerCase()
+                    .includes(inputValue.toLowerCase())
+            )
         );
         setIsFiltered(true);
     };
@@ -106,96 +133,106 @@ function App() {
     };
 
     return (
-        <Router>
-            <div className="App">
-                <Navbar
-                    productFilter={productFilter}
-                    inputValue={inputValue}
-                    handleSetInputValue={handleSetInputValue}
-                    shoppingCart={shoppingCart}
-                    handleCartTotalQuanity={handleCartTotalQuanity}
-                />
-                <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        render={() => (
-                            <Home
-                                shoppingCart={shoppingCart}
-                                setShoppingCart={setShoppingCart}
-                                products={products}
-                                setProducts={setProducts}
-                                filteredProducts={filteredProducts}
-                                handleAddingItemsToCart={
-                                    handleAddingItemsToCart
-                                }
-                                maxQuantityReached={maxQuantityReached}
-                                setMaxQuantityReached={setMaxQuantityReached}
-                                inputValue={inputValue}
-                            />
-                        )}
+        <ThemeProvider theme={AppTheme}>
+            <Router>
+                <div className="App">
+                    <Navbar
+                        productFilter={productFilter}
+                        inputValue={inputValue}
+                        handleSetInputValue={handleSetInputValue}
+                        shoppingCart={shoppingCart}
+                        handleCartTotalQuanity={handleCartTotalQuanity}
                     />
-                    <Route
-                        path="/cart"
-                        render={() => (
-                            <ShoppingCart
-                                shoppingCart={shoppingCart}
-                                setShoppingCart={setShoppingCart}
-                                products={products}
-                                setProducts={setProducts}
-                                handleTotalPrice={handleTotalPrice}
-                                handleChangeQuantity={handleChangeQuantity}
-                                handleCartTotalQuanity={handleCartTotalQuanity}
-                                total={total}
-                                setTotal={setTotal}
-                                totalItems={totalItems}
-                                setTotalItems={setTotalItems}
-                            />
-                        )}
-                    />
+                    <Switch>
+                        <Route
+                            exact
+                            path="/"
+                            render={() => (
+                                <Home
+                                    shoppingCart={shoppingCart}
+                                    setShoppingCart={setShoppingCart}
+                                    products={products}
+                                    setProducts={setProducts}
+                                    filteredProducts={filteredProducts}
+                                    handleAddingItemsToCart={
+                                        handleAddingItemsToCart
+                                    }
+                                    maxQuantityReached={maxQuantityReached}
+                                    setMaxQuantityReached={
+                                        setMaxQuantityReached
+                                    }
+                                    inputValue={inputValue}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/cart"
+                            render={() => (
+                                <ShoppingCart
+                                    shoppingCart={shoppingCart}
+                                    setShoppingCart={setShoppingCart}
+                                    products={products}
+                                    setProducts={setProducts}
+                                    handleTotalPrice={handleTotalPrice}
+                                    handleChangeQuantity={handleChangeQuantity}
+                                    handleCartTotalQuanity={
+                                        handleCartTotalQuanity
+                                    }
+                                    total={total}
+                                    setTotal={setTotal}
+                                    totalItems={totalItems}
+                                    setTotalItems={setTotalItems}
+                                />
+                            )}
+                        />
 
-                    <Route
-                        path="/products/:name"
-                        render={props => (
-                            <ProductDetails
-                                {...props}
-                                shoppingCart={shoppingCart}
-                                setShoppingCart={setShoppingCart}
-                                products={products}
-                                setProducts={setProducts}
-                                handleAddingItemsToCart={
-                                    handleAddingItemsToCart
-                                }
-                            />
-                        )}
-                    />
-                    <Route
-                        path="/checkout"
-                        render={() => (
-                            <Checkout
-                                handleInventory={handleInventory}
-                                shoppingCart={shoppingCart}
-                                setShoppingCart={setShoppingCart}
-                                products={products}
-                                setProducts={setProducts}
-                                handleTotalPrice={handleTotalPrice}
-                                handleChangeQuantity={handleChangeQuantity}
-                                handleCartTotalQuanity={handleCartTotalQuanity}
-                                total={total}
-                                setTotal={setTotal}
-                                totalItems={totalItems}
-                                setTotalItems={setTotalItems}
-                                consumerName={consumerName}
-                                consumerEmail={consumerEmail}
-                                consumerAddress={consumerAddress}
-                                consumerContactNumber={consumerContactNumber}
-                            />
-                        )}
-                    />
-                    <Route component={NotFound} />
-                </Switch>
-            </div>
-        </Router>
+                        <Route
+                            path="/products/:name"
+                            render={props => (
+                                <ProductDetails
+                                    {...props}
+                                    shoppingCart={shoppingCart}
+                                    setShoppingCart={setShoppingCart}
+                                    products={products}
+                                    setProducts={setProducts}
+                                    handleAddingItemsToCart={
+                                        handleAddingItemsToCart
+                                    }
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/checkout"
+                            render={() => (
+                                <Checkout
+                                    handleInventory={handleInventory}
+                                    shoppingCart={shoppingCart}
+                                    setShoppingCart={setShoppingCart}
+                                    products={products}
+                                    setProducts={setProducts}
+                                    handleTotalPrice={handleTotalPrice}
+                                    handleChangeQuantity={handleChangeQuantity}
+                                    handleCartTotalQuanity={
+                                        handleCartTotalQuanity
+                                    }
+                                    total={total}
+                                    setTotal={setTotal}
+                                    totalItems={totalItems}
+                                    setTotalItems={setTotalItems}
+                                    consumerName={consumerName}
+                                    consumerEmail={consumerEmail}
+                                    consumerAddress={consumerAddress}
+                                    consumerContactNumber={
+                                        consumerContactNumber
+                                    }
+                                />
+                            )}
+                        />
+                        <Route component={NotFound} />
+                    </Switch>
+                </div>
+            </Router>
+        </ThemeProvider>
     );
 }
 

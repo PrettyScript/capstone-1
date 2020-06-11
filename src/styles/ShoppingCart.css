@@ -1,0 +1,53 @@
+.shoppingCartContainer {
+    /* width: 50vw;
+    height: 50vh; */
+    /* border: 3px solid yellow; */
+    /* display: flex; */
+    /* flex-direction: column;
+    justify-content: left; */
+    /* align-content: center; */
+}
+
+.products {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    text-decoration: none;
+}
+
+.productsLink {
+    color: red;
+}
+
+.shoppingCartProduct img {
+    width: 10rem;
+    height: 10rem;
+}
+
+.shoppingCartProduct img:hover {
+    width: 10rem;
+    height: 10rem;
+}
+
+.shoppingCartProduct {
+    text-decoration: none;
+    color: gray;
+}
+
+.cartTotalQuantity {
+    background-color: #f5cac3;
+    width: 200px;
+    margin: auto;
+}
+
+.proceedToCheckbox {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.cartSelect {
+    /* background-color: #ee9a9a; */
+}
+
+.selectButton {
+    /* background-color: #ee9a9a; */
+}

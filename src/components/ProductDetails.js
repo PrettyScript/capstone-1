@@ -1,4 +1,7 @@
 import React from "react";
+import Product from "./Product";
+import Button from "@material-ui/core/Button";
+import "../styles/ProductDetails.css";
 
 export default function ProductDetails(props) {
     const { products, match, handleAddingItemsToCart, product } = props;
@@ -9,23 +12,27 @@ export default function ProductDetails(props) {
     const displayProduct = products.map(product => {
         if (name == product.name)
             return (
-                <div>
-                    <img
-                        key={product.name}
-                        src={require(`../assets/images/${product.name}.png`)}
-                        className="img-responsive"
+                <div className="productDetails">
+                    <Product
+                        key={product.id}
+                        product={product}
+                        products={products}
                     />
-                    <p>{product.name}</p>
-                    <p>{product.serialNumber}</p>
-                    <p>{product.manufacturer}</p>
-                    <p>{product.cateogory}</p>
-                    <button
+                    <div className="info">
+                        <p>Serial Number: {product.serialNumber}</p>
+                        <p>Manufacturer: {product.manufacturer}</p>
+                        <p>Cateogory: {product.cateogory}</p>
+                    </div>
+
+                    <Button
+                        variant="contained"
+                        color="primary"
                         onClick={() => {
                             handleAddingItemsToCart(product);
                         }}
                     >
                         Add to Cart
-                    </button>
+                    </Button>
                 </div>
             );
     });

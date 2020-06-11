@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import Product from "./Product";
+import Button from "@material-ui/core/Button";
 
 export default function Home(props) {
     const {
@@ -20,41 +21,44 @@ export default function Home(props) {
         return inputValue.length > 0 && filteredProducts.length === 0 ? (
             <p>That product is not available</p>
         ) : (
-            listOfProducts.map(product => (
-                <div>
-                    <img
-                        key={product.name}
-                        src={require(`../assets/images/${product.name}.png`)}
-                        className="img-responsive"
-                    />
-                    <Link to={`/products/${product.name}`} className="products">
-                        <Product
-                            key={product.id}
-                            product={product}
-                            products={products}
-                            setProducts={setProducts}
-                        />
-                    </Link>
-                    <button
-                        onClick={() => {
-                            handleAddingItemsToCart(product);
-                        }}
-                    >
-                        Add to cart
-                    </button>
-                </div>
-            ))
+            <div className="productContainer">
+                {listOfProducts.map(product => (
+                    <div className="products">
+                        <Link
+                            to={`/products/${product.name}`}
+                            className="products"
+                        >
+                            <Product
+                                key={product.id}
+                                product={product}
+                                products={products}
+                                setProducts={setProducts}
+                            />
+                        </Link>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                handleAddingItemsToCart(product);
+                            }}
+                        >
+                            Add to cart
+                        </Button>
+                    </div>
+                ))}
+            </div>
         );
     };
 
     return (
         <div>
-            <header className="App-header">
-                <h1>[Place Ad here]</h1>
-            </header>
             {(filteredProducts.length > 0 &&
                 displayProducts(filteredProducts)) ||
                 displayProducts(products)}
         </div>
     );
 }
+
+// <header className="App-header">
+//                 <h1>Limited Stock</h1>
+//             </header>

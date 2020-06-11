@@ -1,13 +1,19 @@
 import React from "react";
-import "../Product.css";
+import "../styles/Product.css";
 // import images from "../../public/images";
 
 export default function Product(props) {
     const { products, setproducts, product } = props;
 
     return (
+        // <div className="product">
         <div>
-            <p className="product">{product.name}</p>
+            <img
+                key={product.name}
+                src={require(`../assets/images/${product.name}.png`)}
+                className="img-responsive"
+            />
+            <p className="product">{product.name.replace(/-/g, " ")}</p>
         </div>
     );
 }

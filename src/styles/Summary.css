@@ -1,0 +1,6 @@
+.summary {
+    border: 2px pink solid;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

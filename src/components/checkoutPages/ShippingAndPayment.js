@@ -10,17 +10,12 @@ export default function ShippingAndPayment() {
         console.log({ token, addresses });
     };
 
-    const [consumerInput, setConsumerInput] = useState({
-        name: "",
-        email: "",
-        address: "",
-        contactNumber: 1010
-    });
+    const [consumerInput, setConsumerInput] = useState({});
 
-    const handleConsumerInformation = e => {
-        let firstName = document.getElementById("firstName").value;
-        console.log(firstName);
-        setConsumerInput({ name: firstName });
+    const handleConsumerInformation = (key, value) => {
+        let info = {};
+        info[key] = value;
+        setConsumerInput({ ...consumerInput, info });
         console.log(consumerInput);
     };
 
@@ -28,7 +23,7 @@ export default function ShippingAndPayment() {
         <div>
             <Fragment>
                 <Typography variant="h6" gutterBottom>
-                    Tell Us About Yourself
+                    Contact Information
                 </Typography>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
@@ -38,7 +33,12 @@ export default function ShippingAndPayment() {
                             label="First name"
                             fullWidth
                             autoComplete="given-name"
-                            onChange={() => handleConsumerInformation()}
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "firstName",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -48,6 +48,12 @@ export default function ShippingAndPayment() {
                             label="Last name"
                             fullWidth
                             autoComplete="family-name"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "lastName",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -57,6 +63,12 @@ export default function ShippingAndPayment() {
                             label="Address line 1"
                             fullWidth
                             autoComplete="billing address-line1"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "deliveryAddress1",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -66,6 +78,12 @@ export default function ShippingAndPayment() {
                             label="Address line 2"
                             fullWidth
                             autoComplete="billing address-line2"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "deliveryAddress2",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -74,7 +92,13 @@ export default function ShippingAndPayment() {
                             name="city"
                             label="City"
                             fullWidth
-                            autoComplete="billing address-level2"
+                            autoComplete="billing city"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "city",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -83,6 +107,12 @@ export default function ShippingAndPayment() {
                             name="state"
                             label="State/Province/Region"
                             fullWidth
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "state",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -92,6 +122,12 @@ export default function ShippingAndPayment() {
                             label="Zip / Postal Code"
                             fullWidth
                             autoComplete="billing postal-code"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "postalCode",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -101,6 +137,12 @@ export default function ShippingAndPayment() {
                             label="Country"
                             fullWidth
                             autoComplete="billing country"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "country",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -110,14 +152,22 @@ export default function ShippingAndPayment() {
                             label="Email"
                             fullWidth
                             autoComplete="email"
+                            onChange={e =>
+                                handleConsumerInformation(
+                                    "email",
+                                    e.target.value
+                                )
+                            }
                         />
                     </Grid>
-                    <StripeCheckout
-                        stripeKey="pk_test_51GsJLXAAc67suevO3aMIeQsubPYAiRawpoNi6pCQtOhEqRTjZr5ddwAOgGD28nEzENOdVQmhmptu74Ej2Pj8h9DW00CV9pXH69"
-                        token={handleToken}
-                    />
                 </Grid>
             </Fragment>
         </div>
     );
 }
+
+// <StripeCheckout
+//                         className="stripe"
+//                         stripeKey="pk_test_51GsJLXAAc67suevO3aMIeQsubPYAiRawpoNi6pCQtOhEqRTjZr5ddwAOgGD28nEzENOdVQmhmptu74Ej2Pj8h9DW00CV9pXH69"
+//                         token={handleToken}
+//                     />

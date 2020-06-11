@@ -15,6 +15,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import red from "@material-ui/core/colors/red";
+import "../styles/Navbar.css";
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -176,15 +178,14 @@ export default function Navbar(props) {
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar>
-                    <Link to="/">
+                    <Link to="/" className="navbarLink">
                         <Typography
                             className={classes.title}
                             variant="h6"
                             noWrap
                         >
-                            Celeste
+                            Celeste Luxury Baby Clothes
                         </Typography>
-                        <Typography>Luxury Baby Clothes</Typography>
                     </Link>
 
                     <div className={classes.grow} />
@@ -208,7 +209,7 @@ export default function Navbar(props) {
                                 onChange={handleSetInputValue}
                             />
                         </div>
-                        <Link to="/cart">
+                        <Link to="/cart" className="navbarLink">
                             <IconButton
                                 aria-label="show 4 new mails"
                                 color="inherit"

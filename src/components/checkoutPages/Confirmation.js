@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/Confirmation.css";
 
 export default function Confirmation() {
     const generateOrderReferenceNumber = () => {
@@ -21,23 +22,23 @@ export default function Confirmation() {
                 We are getting started on your order right away, you will
                 recieve an order confirmation shortly.
             </p>
+            <h2>Order Details - {generateOrderReferenceNumber()}</h2>
 
-            <div>
-                <h3>Order Details - {generateOrderReferenceNumber()}</h3>
+            <div className="orderContainer">
                 <div>
-                    <h2>Email</h2>
+                    <h3>Email</h3>
                     <p>janedoe@gmail.com</p>
-                    <h2>Payment Method</h2>
+                    <h3>Payment Method</h3>
                     <p>Stripe</p>
-                    <h2>Order Date</h2>
+                    <h3>Order Date</h3>
                     <p>{handleTodaysDate()}</p>
                 </div>
                 <div>
-                    <h2>Delivery Options</h2>
+                    <h3>Delivery Options</h3>
                     <p>Standard</p>
-                    <h2>Delivery Address</h2>
+                    <h3>Delivery Address</h3>
                     <p>1725 Slough Avenue Scranton, PA</p>
-                    <h2>Contact Number</h2>
+                    <h3>Contact Number</h3>
                     <p>(123)456-9898</p>
                 </div>
             </div>

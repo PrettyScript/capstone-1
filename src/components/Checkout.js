@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import Summary from "./checkoutPages/Summary";
 import ShippingAndPayment from "./checkoutPages/ShippingAndPayment";
 import Confirmation from "./checkoutPages/Confirmation";
+import Stripe from "../components/checkoutPages/Stripe";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -95,6 +96,7 @@ export default function Checkout(props) {
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [paymentSubmitted, setPaymentSubmitted] = React.useState(false);
     const steps = getSteps();
 
     const handleNext = () => {
@@ -149,15 +151,23 @@ export default function Checkout(props) {
                             >
                                 Back
                             </Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                            >
-                                {activeStep === steps.length - 1
-                                    ? "Finish"
-                                    : "Next"}
-                            </Button>
+                            {activeStep === steps.length - 2 &&
+                            !paymentSubmitted ? (
+                                <Stripe
+                                    setActiveStep={setActiveStep}
+                                    activeStep={activeStep}
+                                />
+                            ) : (
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                >
+                                    {activeStep === steps.length - 1
+                                        ? "Done"
+                                        : "Next"}
+                                </Button>
+                            )}
                         </div>
                     </div>
                 )}
